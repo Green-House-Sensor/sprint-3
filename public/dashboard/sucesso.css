@@ -1,0 +1,45 @@
+* {
+    padding: 0;
+    margin: 0;
+
+}.container-sucesso {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+ }
+ 
+ .container-sucesso .card {
+    background-color: whitesmoke;
+    height: 80vh;
+    width: 40vw;
+    border-radius: 12px;
+
+ }
+
+ .topo {
+     background-color: rgb(21, 240, 17);
+     width: 100%;
+     height: 120px;
+     border-radius: 12px;
+     color: white;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+ }
+
+ .container-sucesso span {
+     font-size: 42px;
+ }
+
+ .container-sucesso .infos {
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     flex-direction: column;
+ }
+
+ .container-sucesso .infos h3{
+   margin-bottom: 24px;
+}
