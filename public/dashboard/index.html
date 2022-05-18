@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avisos!</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styledash.css">
+    <link rel="shortcut icon" href="../assets/icon/logo.png">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp">
+    <script src="https://kit.fontawesome.com/4ea0191552.js" crossorigin="anonymous"></script>
+    <script src="../js/funcoes.js"></script>
+</head>
+
+<body onload="validarSessao(), atualizarFeed()">
+    <div class="container">
+
+        <!-- COMEÇO ESQUERDA  -->
+
+        <aside>
+            <div class="right">
+                <div class="profile">
+                    <div class="info">
+                        <div class="imagem-profile">
+                            <i class="fa-solid fa-circle-user fa-6x"></i>
+                        </div>
+                        <h3>Olá,
+                            <br>
+                            <span id="b_usuario">usuário</span>!
+                            <br>
+                            ID = <span id="b_id">teste</span>
+                        </h3>
+
+                        <!-- <small class="text-muted">Admin</small> -->
+                    </div>
+                </div><br>
+            </div>
+            <div class="sidebar">
+                <a>
+                    <span class="material-icons-sharp">grid_view</span>
+                    <h3>Dashboard</h3>
+                    <a href="solicitacao.html">
+                        <span class="material-icons-sharp">request_page</span>
+                        <h3>Solicitar serviço</h3>
+                    </a>
+                    <a href="dependente.html">
+                        <span class="material-icons-sharp">group_add</span>
+                        <h3>Adicionar dependente</h3>
+                    </a>
+                    <a href="help.html">
+                        <span class="material-icons-sharp">support_agent</span>
+                        <h3>Está com problemas?</h3>
+                    </a>
+                    <a class="btn-logout" onclick="limparSessao()">
+                        <span class="material-icons-sharp">logout</span>
+                        <h3>Logout</h3>
+                    </a>
+
+        </aside>
+        <!-- FIM ESQUERDA  -->
+        <main>
+            <H1>Estufas Ativas</h1>
+            <div class="aviso-cima">
+                <a href="dashboard.html">
+                    <div class="estufa1"><span>Estufa 1</span><img src="../assets/imgs/estufa.png" alt="">
+                        <div class="problema1">
+                            <div class="estadoc">Estado Critico</div>
+                            <div class="probtemp">Temperatura Alta!</div>
+                            <div class="probumi">Umidade Alta!</div>
+                            <div class="problumi">Luminosidade Baixa!</div>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="dashboard.html">
+                    <div class="estufa2"><span>Estufa 2</span>
+                        <img src="../assets/imgs/estufa.png" alt="">
+                        <div class="problema2">
+                            <div class="estadoc">Estado Critico</div>
+                            <div class="probtemp"></div>
+                            <div class="probumi"></div>
+                            <div class="problumi">Luminosidade Baixa!</div>
+
+                        </div>
+                    </div>
+                </a>
+                <a href="dashboard.html">
+                    <div class="estufa3"><span>Estufa 3 </span><img src="../assets/imgs/estufa.png" alt="">
+                        <div class="problema3">
+                            <div class="estadoc">Estado Critico</div>
+                            <div class="probtemp">Temperatura Alta!</div>
+                            <div class="probumi"></div>
+                            <div class="problumi"></div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="aviso-baixo">
+                <a href="dashboard.html">
+                    <div class="estufa4"><span>Estufa 4</span><img src="../assets/imgs/estufa.png" alt="">
+                        <div class="problema4">
+                            <div class="estadoc">Estado Critico</div>
+                            <div class="probtemp">Temperatura Alta!</div>
+                            <div class="probumi">Umidade Alta!</div>
+                            <div class="problumi">Luminosidade Baixa!</div>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="dashboard.html">
+                    <div class="estufa5"><span>Estufa 5</span>
+                        <img src="../assets/imgs/estufa.png" alt="">
+                        <div class="problema5">
+                            <div class="estadoa">Estado De Alerta</div>
+                            <div class="probtemp"></div>
+                            <div class="probumi"></div>
+                            <div class="problumi">Luminosidade em Alerta!</div>
+
+                        </div>
+                    </div>
+                </a>
+                <a href="dashboard.html">
+                    <div class="estufa6"><span>Estufa 6</span><img src="../assets/imgs/estufa.png" alt="">
+                        <div class="problema6">
+                            <div class="estadoa">Estado De Alerta</div>
+                            <div class="probtemp">Temperatura em Alerta!</div>
+                            <div class="probumi"> Umidade em Alerta!</div>
+                            <div class="problumi"></div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+    </div>
+    </main>
+
+    </div>
+    <!-- FIM DO MENU -->
+
+</body>
+
+</html>
