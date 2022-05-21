@@ -25,7 +25,7 @@ function cadastrar(nome, data, tipo, cpf, cep, num, email, senha) {
     // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
     //  e na ordem de inserção dos dados.
     var instrucao = `
-        INSERT INTO usuario (nome, dtNasc, tipo, CPFCNPJ, CEP, numero, email, senha) VALUES ('${nome}', '${data}', '${tipo}', '${cpf}', '${cep}', '${num}', '${email}', '${senha}');
+        INSERT INTO usuario (nome_razaosocial, dtNasc, tipo, cpf_cnpj, cep, numero, email, senha) VALUES ('${nome}', '${data}', '${tipo}', '${cpf}', '${cep}', '${num}', '${email}', '${senha}');
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
@@ -37,7 +37,7 @@ function adicionar(nome, id, data, cpf, email, senha) {
     // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
     //  e na ordem de inserção dos dados.
     var instrucao = `
-        INSERT INTO usuario (nome, fkDependente, dtNasc, CPFCNPJ, email, senha) VALUES ('${nome}', '${id}', '${data}', '${cpf}', '${email}', '${senha}');
+        INSERT INTO usuario (nome_razaosocial, fkDependente, dtNasc, cpf_cnpj, email, senha) VALUES ('${nome}', '${id}', '${data}', '${cpf}', '${email}', '${senha}');
     `;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
