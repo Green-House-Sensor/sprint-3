@@ -1,12 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Solicitação de serviço</title>
     <link rel="stylesheet" href="soli.css">
+<<<<<<< HEAD
+=======
+    <script src="scriptsoli.js"></script>
+>>>>>>> e89b0ed69232539eb0be8bd0f2025ba702af40c6
 </head>
+
 <body>
     <div class="simulador">
         <div class="exibir">
@@ -15,127 +21,30 @@
             <input id="ipt_largura" placeholder="Digite a largura">
             <br><br>
             <h5>Comprimento da estufa (m)</h5>
-             <input id="ipt_comprimento" placeholder="Digite o  comprimento">
+            <input id="ipt_comprimento" placeholder="Digite o  comprimento">
             <button onclick="simular()">Simulador</button>
             <div id="div_resposta"></div>
             <h4 onclick="fazersoli()">Fazer solicitação</h4>
         </div>
         <div class="solicitador" id="solicitador_id" style="display: none;">
             <h1>Solicite aqui!</h1>
+<<<<<<< HEAD
             <input type="text" placeholder="Email">
             <input type="number" placeholder="Largura">
             <input type="number" placeholder="Comprimento">
             <a href="sucesso.html"><button>Solicitar</button></a>
         </div>
     </div>
+=======
+            <input type="text" placeholder="Email" id="emailinput">
+            <input type="number" placeholder="Largura" id="largurainput">
+            <input type="number" placeholder="Comprimento" id="comprimentoinput">
+            <a href="sucesso.html"><button> Solicitar</button></a>
+
+        </div>
+    </div>
+
+>>>>>>> e89b0ed69232539eb0be8bd0f2025ba702af40c6
 </body>
+
 </html>
-<script>
-    function fazersoli() {
-        solicitador_id.style.display = "block"
-        solicitador_id.style.display = "flex"
-    }
-    function reset() {
-        ipt_comprimento.classList.remove("placeholderred")
-        ipt_comprimento.style = `border: 2px solid none;`
-        ipt_largura.classList.remove("placeholderred")
-        ipt_largura.style = `border: 2px solid none;`
-        div_resposta.innerHTML = ``
-    }
-    function simular() {
-        var larg = Number(ipt_largura.value);
-        var comp = Number(ipt_comprimento.value);
-        var m2 = larg * comp;
-        var sensor = 125;
-        var preco = 2500;
-        var qtdSensor = m2 / sensor;
-        qtdSensor = Math.ceil(qtdSensor);
-        reset()
-        if ( larg == `` || comp == ``) {
-            div_resposta.innerHTML = `<b>Preencha todos os campos.</b>`
-            ipt_largura.placeholder = `Campo obrigatório.`
-            ipt_largura.style = `border: 2px solid red;`
-            ipt_largura.classList.add("placeholderred")
-            ipt_comprimento.placeholder = `Campo obrigatório.`
-            ipt_comprimento.style = `border: 2px solid red;`
-            ipt_comprimento.classList.add("placeholderred")
-        }
-        else if (m2 <= 125 && m2 > 0) {
-            preco1 = preco;
-
-            if (larg > 0 && larg > 10) {
-    
-                div_resposta.innerHTML = `<br>A área da sua estufa é de <b>${m2} m²</b>, então serão necessários <b>${qtdSensor} kit(s) de sensor(es)</b>, com um custo total de <b>R$ ${preco1.toFixed(2)}</b>.`
-            }
-            else {
-                preco1 = preco;
-
-                
-                div_resposta.innerHTML = `<br>A área da sua estufa é de <b>${m2} m²</b>, então serão necessários <b>${qtdSensor} kit(s) de sensor(es)</b>, com um custo total de <b>R$ ${preco1.toFixed(2)}</b>.`
-            }
-        }
-        else if (m2 > 125 && m2 <= 250) {
-
-            preco2 = (preco * 0.9) * qtdSensor;
-
-            if (larg > 0 && larg > 10) {
-                
-                div_resposta.innerHTML = `<br>A área da sua estufa é de <b>${m2} m²</b>, então serão necessários <b>${qtdSensor} kit(s) de sensor(es)</b>, com um custo total de <b>R$ ${preco2.toFixed(2)}</b>.`
-            }
-            else {
-                
-                div_resposta.innerHTML = `<br>A área da sua estufa é de <b>${m2} m²</b>, então serão necessários <b>${qtdSensor} kit(s) de sensor(es)</b>, com um custo total de <b>R$ ${preco2.toFixed(2)}</b>.`
-            }
-        }
-        else if (m2 > 250 && m2 <= 375) {
-
-            preco3 = (preco * 0.8) * qtdSensor;
-  
-            if (larg > 0 && larg > 10) {
-               
-                div_resposta.innerHTML = `<br>A área da sua estufa é de <b>${m2} m²</b>, então serão necessários <b>${qtdSensor} kit(s) de sensor(es)</b>, com um custo total de <b>R$ ${preco3.toFixed(2)}</b>.`
-            }
-            else {
-                
-                div_resposta.innerHTML = `<br>A área da sua estufa é de <b>${m2} m²</b>, então serão necessários <b>${qtdSensor} kit(s) de sensor(es)</b>, com um custo total de <b>R$ ${preco3.toFixed(2)}</b>.`
-            }
-        }
-        else if (m2 > 375 && m2 <= 500) {
-
-            preco4 = (preco * 0.7) * qtdSensor;
-         
-            if (larg > 10 && larg <= 20) {
-                
-                div_resposta.innerHTML = `<br>A área da sua estufa é de <b>${m2} m²</b>, então serão necessários <b>${qtdSensor} kit(s) de sensor(es)</b>, com um custo total de <b>R$ ${preco4.toFixed(2)}</b>.`
-            }
-            if (larg > 20) {
-                
-                div_resposta.innerHTML = `<br>A área da sua estufa é de <b>${m2} m²</b>, então serão necessários <b>${qtdSensor} kit(s) de sensor(es)</b>, com um custo total de <b>R$ ${preco4.toFixed(2)}</b>.`
-            }
-            else {     
-                
-                div_resposta.innerHTML = `<br>A área da sua estufa é de <b>${m2} m²</b>, então serão necessários <b>${qtdSensor} kit(s) de sensor(es)</b>, com um custo total de <b>R$ ${preco4.toFixed(2)}</b>.`
-            }
-        }
-        else if (m2 > 500) {
-
-            preco5 = (preco * 0.65) * qtdSensor;
-        
-            if (larg > 10 && larg <= 20) {
-                
-                
-                div_resposta.innerHTML = `<br>A área da sua estufa é de <b>${m2} m²</b>, então serão necessários <b>${qtdSensor} kit(s) de sensor(es)</b>, com um custo total de <b>R$ ${preco5.toFixed(2)}</b>.`
-            }
-            if (larg > 20) {
-        
-                div_resposta.innerHTML = `<br>A área da sua estufa é de <b>${m2} m²</b>, então serão necessários <b>${qtdSensor} kit(s) de sensor(es)</b>, com um custo total de <b>R$ ${preco5.toFixed(2)}</b>.`
-            }
-            else {
-               
-                div_resposta.innerHTML = `<br>A área da sua estufa é de <b>${m2} m²</b>, então serão necessários <b>${qtdSensor} kit(s) de sensor(es)</b>, com um custo total de <b>R$ ${preco5.toFixed(2)}</b>.`
-            }
-        }
-
-    }
-
-</script>
