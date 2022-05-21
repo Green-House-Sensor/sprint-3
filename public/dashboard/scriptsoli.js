@@ -106,14 +106,5 @@ var comp = 0
         }
     }
 
-    function mostrarinfo() {
-        larg = Number(ipt_largura.value);
-        comp = Number(ipt_comprimento.value);
-        infoid.style.display = "block"
-        infoid.style.display = "flex"
-        span_larg.innerHTML = `${larg}`
-        span_comp.innerHTML = `${comp}`
-        span_kits.innerHTML = `${qtdSensor}`
-        span_valor.innerHTML = `${preco5.toFixed(2)}`
-    }
+  
 
