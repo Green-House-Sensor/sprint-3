@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Righteous&family=Sarala&display=swap');
+
 /* COMEÇO ESQUERDA */
 aside {
     background: var(--color-light);
@@ -81,12 +83,12 @@ aside .sidebar a:hover {
 
 aside .sidebar a:hover span {
     margin-left: 0.8rem;
-} */
+}
 
-main {
-background-color: rgb(213, 213, 213);
-height: 800;
-width: 85vw;
+*/ main {
+    background-color: rgb(213, 213, 213);
+    height: 800;
+    width: 85vw;
 }
 
 main h1 {
@@ -96,19 +98,21 @@ main h1 {
     display: flex;
     justify-content: center;
     padding: 25px;
+    font-family: 'Poppins', sans-serif;
 }
+
 .aviso-cima {
-margin-top: 5px;
-margin-left: 25px;
-display: flex;
-justify-content: space-evenly;
+    margin-top: 5px;
+    margin-left: 25px;
+    display: flex;
+    justify-content: space-evenly;
 }
 
 .aviso-baixo {
-margin-top: 110px;
-margin-left: 25px;
-display: flex;
-justify-content: space-evenly;
+    margin-top: 110px;
+    margin-left: 25px;
+    display: flex;
+    justify-content: space-evenly;
 }
 
 main img {
@@ -130,27 +134,30 @@ main span {
     height: 260px;
     width: 250px;
     padding: 0;
-    border-radius: 6px;
-    box-shadow:  20px 20px 60px #bebebe,
-    -20px -20px 60px #ffffff;
+    border-radius: 10%;
+    box-shadow: 20px 20px 60px #bebebe,
+        -20px -20px 60px #ffffff;
+    padding-top: 0.5rem;
 }
 
 .estufa2 {
     background-color: #ffffff;
     height: 260px;
     width: 250px;
-    border-radius: 6px;
-    box-shadow:  20px 20px 60px #bebebe,
-    -20px -20px 60px #ffffff;
+    border-radius: 10%;
+    box-shadow: 20px 20px 60px #bebebe,
+        -20px -20px 60px #ffffff;
+        padding-top: 0.5rem;
 }
 
 .estufa3 {
     background-color: rgb(255, 255, 255);
     height: 260px;
     width: 250px;
-    border-radius: 6px;
-    box-shadow:  20px 20px 60px #bebebe,
-    -20px -20px 60px #ffffff;
+    border-radius: 10%;
+    box-shadow: 20px 20px 60px #bebebe,
+        -20px -20px 60px #ffffff;
+        padding-top: 0.5rem;
 }
 
 .problema1 {
@@ -161,6 +168,7 @@ main span {
     font-size: 1.2rem;
     font-weight: 600;
 }
+
 .problema2 {
     display: grid;
     display: none;
@@ -170,6 +178,7 @@ main span {
     font-size: 1.2rem;
     font-weight: 600;
 }
+
 .problema3 {
     display: none;
     display: flex;
@@ -178,32 +187,36 @@ main span {
     font-size: 1.2rem;
     font-weight: 600;
 }
+
 .estufa4 {
     background-color: rgb(255, 255, 255);
     height: 260px;
     width: 250px;
     padding: 0;
-    border-radius: 6px;
-    box-shadow:  20px 20px 60px #bebebe,
-    -20px -20px 60px #ffffff;
+    border-radius: 10%;
+    box-shadow: 20px 20px 60px #bebebe,
+        -20px -20px 60px #ffffff;
+        padding-top: 0.5rem;
 }
 
 .estufa5 {
     background-color: #ffffff;
     height: 260px;
     width: 250px;
-    border-radius: 6px;
-    box-shadow:  20px 20px 60px #bebebe,
-             -20px -20px 60px #ffffff;
+    border-radius: 10%;
+    box-shadow: 20px 20px 60px #bebebe,
+        -20px -20px 60px #ffffff;
+        padding-top: 0.5rem;
 }
 
 .estufa6 {
     background-color: rgb(255, 255, 255);
     height: 260px;
     width: 250px;
-    border-radius: 6px;
-    box-shadow:  20px 20px 60px #bebebe,
-             -20px -20px 60px #ffffff;
+    border-radius: 10%;
+    box-shadow: 20px 20px 60px #bebebe,
+        -20px -20px 60px #ffffff;
+        padding-top: 0.5rem;
 }
 
 .problema4 {
@@ -214,6 +227,7 @@ main span {
     font-size: 1.2rem;
     font-weight: 600;
 }
+
 .problema5 {
     display: grid;
     display: none;
@@ -223,6 +237,7 @@ main span {
     font-size: 1.2rem;
     font-weight: 600;
 }
+
 .problema6 {
     display: none;
     display: flex;
@@ -231,6 +246,7 @@ main span {
     font-size: 1.2rem;
     font-weight: 600;
 }
+
 .estadoc {
     background-color: #ff6767;
     border-radius: 3px;
@@ -245,9 +261,3 @@ main a {
     text-decoration: none;
     color: black;
 }
-
-
-
-
-
-
