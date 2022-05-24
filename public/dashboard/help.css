@@ -79,3 +79,9 @@ summary:hover {
     padding: 8px;
     border-radius: 6px;
 }
+
+
+.containerhelp a{
+	text-decoration: none;
+	color: black;
+}
