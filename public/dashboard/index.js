@@ -1,3 +1,5 @@
+<<<<<<< HEAD
+=======
 const themeToggler = document.querySelector(".theme-toggler");
 
 themeToggler.addEventListener('click', () => {
@@ -21,3 +23,4 @@ Orders.forEach(order => {
     tr.innerHTML = trContent;
     document.querySelector('table tbody').appendChild(tr);
 })
+>>>>>>> e89b0ed69232539eb0be8bd0f2025ba702af40c6
