@@ -896,7 +896,8 @@ body {
   font-size: 18px;
   padding: 10px 15px;
   color: #e6005a;
-  background-color: white;
+  background-color: var(--color-light);
+  border-radius: var(--border-radius-1);
   margin: 5px;
-  border-radius: 3px;
+  cursor: pointer;
 }
