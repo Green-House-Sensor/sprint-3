@@ -19,11 +19,11 @@ function validarSessao() {
 
         // finalizarAguardar();
     } 
-    if (fk != 'null') {
-        id_cargo.innerHTML = `Dependente`
-    } else {
-        id_cargo.innerHTML = `Admin`
-    }
+    // if (fk != 'null') {
+    //     id_cargo.innerHTML = `Dependente`
+    // } else {
+    //     id_cargo.innerHTML = `Admin`
+    // }
 
     
     // else {

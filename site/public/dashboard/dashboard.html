@@ -44,6 +44,10 @@
                         <span class="material-icons-sharp">request_page</span>
                         <h3>Solicitar serviço</h3>
                     </a>
+                    <a href="KPI.html">
+                        <span class="material-icons-sharp">request_page</span>
+                        <h3>KPI</h3>
+                    </a>
                     <a onclick="dependente()">
                         <span class="material-icons-sharp">group_add</span>
                         <h3>Adicionar dependente</h3>
@@ -102,6 +106,9 @@
                 <div class="graph">
                     <canvas id="canvas_grafico"></canvas>
                 </div>
+                <div class="graph">
+                    <canvas id="grafico_umid"></canvas>
+                </div>
             </div>
             
 
@@ -125,7 +132,7 @@
 
     function alterarTitulo(idEstufa) {
         var tituloAquario = document.getElementById("tituloAquario")
-        tituloAquario.innerHTML = "Últimas medidas de Temperatura e Umidade do <span style='color: #e6005a'>Aquário " + idEstufa + "</span>"
+        tituloAquario.innerHTML = "Últimas medidas de Temperatura e Umidade do <span style='color: #e6005a'>Estufa " + idEstufa + "</span>"
     }
 
     // O gráfico é construído com três funções:
@@ -187,15 +194,38 @@
                     backgroundColor: '#32b9cd8f',
                     fill: true,
                     data: []
+                },{
+                    yAxisID: 'y-luminosidade',
+                    label: 'Luminosidade',
+                    borderColor: '#FFF',
+                    backgroundColor: '#32b9cd8a',
+                    fill: true,
+                    data: []
                 }
             ]
         };
 
+        var dadosUmid = {
+            labels: [],
+            datasetsUmid: [
+                {
+                    yAxisID: 'y-umidade',
+                    label: 'Umidade',
+                    borderColor: '#FFF',
+                    backgroundColor: '#32b9cd8f',
+                    fill: true,
+                    dataUmid: []
+                }
+            ]
+        };
+        
+
         for (i = 0; i < resposta.length; i++) {
             var registro = resposta[i];
             dados.labels.push(registro.momento);
-            dados.datasets[0].data.push(registro.dht11Umidade);
+            dadosUmid.datasetsUmid[0].dataUmid.push(registro.dht11Umidade);
             dados.datasets[1].data.push(registro.lm35Temperatura);
+            dados.datasets[2].data.push(registro.luminosidade);
         }
 
         console.log(JSON.stringify(dados));
@@ -223,7 +253,17 @@
                             max: 100,
                             min: 0
                         }
-                    }, {
+                    },{
+                        type: 'linear',
+                        display: false,
+                        position: 'left',
+                        id: 'y-luminosidade',
+                        ticks: {
+                            beginAtZero: true,
+                            max: 1000,
+                            min: 0
+                        }
+                    },{
                         type: 'linear',
                         display: false,
                         position: 'right',
@@ -241,8 +281,39 @@
                 }
             }
         });
+        var umid = grafico_umid.getContext('2d');
+        window.grafico_linha = Chart.Line(umid, {
+            dataUmid: dadosUmid,
+            options: {
+                responsive: true,
+                animation: { duration: 500 },
+                hoverMode: 'index',
+                stacked: false,
+                title: {
+                    display: true,
+                    text: 'Dados capturados'
+                },
+                scales: {
+                    yAxes: [{
+                        type: 'linear',
+                        display: true,
+                        position: 'left',
+                        id: 'y-umidade',
+                        ticks: {
+                            beginAtZero: true,
+                            max: 100,
+                            min: 0
+                        },
 
-        setTimeout(() => atualizarGrafico(idEstufa, dados), 2000);
+                        gridLines: {
+                            drawOnChartArea: false,
+                        },
+                    }],
+                }
+            }
+        });
+
+        setTimeout(() => atualizarGrafico(idEstufa, dados, dadosUmid), 2000);
     }
 
 
@@ -251,34 +322,38 @@
 
     //     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
     //     Para ajustar o "select", ajuste o comando sql em src/models
-    function atualizarGrafico(idEstufa, dados) {
+    function atualizarGrafico(idEstufa, dados, dadosUmid) {
 
         fetch(`/medidas/tempo-real/${idEstufa}`, { cache: 'no-store' }).then(function (response) {
             if (response.ok) {
-                response.json().then(function (novoRegistro) {
+                response.json().then(function (novoRegistro, umidade) {
 
                     console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
+                    console.log(`Dados recebidos: ${JSON.stringify(umidade)}`);
                     console.log(`Dados atuais do gráfico: ${dados}`);
 
                     // tirando e colocando valores no gráfico
                     dados.labels.shift(); // apagar o primeiro
                     dados.labels.push(novoRegistro[0].momento); // incluir um novo momento
                     
-                    dados.datasets[0].data.shift();  // apagar o primeiro de umidade
-                    dados.datasets[0].data.push(novoRegistro[0].dht11Umidade); // incluir uma nova medida de umidade
+                    dadosUmid.datasetsUmid[0].dataUmid.shift();  // apagar o primeiro de umidade
+                    dadosUmid.datasetsUmid[0].dataUmid.push(umidade[0].dht11Umidade); // incluir uma nova medida de umidade
                     
                     dados.datasets[1].data.shift();  // apagar o primeiro de temperatura
                     dados.datasets[1].data.push(novoRegistro[0].lm35Temperatura); // incluir uma nova medida de temperatura
 
+                    dados.datasets[2].data.shift();  // apagar o primeiro de temperatura
+                    dados.datasets[2].data.push(novoRegistro[0].luminosidade); // incluir uma nova medida de temperatura
+
                     window.grafico_linha.update();
 
                     // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-                    proximaAtualizacao = setTimeout(() => atualizarGrafico(idEstufa, dados), 2000);
+                    proximaAtualizacao = setTimeout(() => atualizarGrafico(idEstufa, dados, dadosUmid), 2000);
                 });
             } else {
                 console.error('Nenhum dado encontrado ou erro na API');
                 // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-                proximaAtualizacao = setTimeout(() => atualizarGrafico(idEstufa, dados), 2000);
+                proximaAtualizacao = setTimeout(() => atualizarGrafico(idEstufa, dados, dadosUmid), 2000);
             }
         })
             .catch(function (error) {

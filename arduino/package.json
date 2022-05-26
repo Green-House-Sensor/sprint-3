@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.3",
+    "mssql": "^8.1.1",
     "mysql2": "^2.3.3",
     "serialport": "^10.4.0"
   }
