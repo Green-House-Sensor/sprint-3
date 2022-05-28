@@ -13,6 +13,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://kit.fontawesome.com/4ea0191552.js" crossorigin="anonymous"></script>
     <script type="text/javascript" src="https://www.chartjs.org/dist/2.8.0/Chart.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
 
 <body onload="validarSessao(), atualizarFeed()">
     <div class="container">
@@ -45,7 +46,9 @@
                         <h3>Solicitar serviço</h3>
                     </a>
                     <a href="KPI.html">
-                        <span class="material-icons-sharp">request_page</span>
+                        <span class="material-symbols-outlined">
+                            analytics
+                            </span>
                         <h3>KPI</h3>
                     </a>
                     <a onclick="dependente()">
@@ -55,6 +58,12 @@
                     <a href="help.html">
                         <span class="material-icons-sharp">support_agent</span>
                         <h3>Está com problemas?</h3>
+                    </a>
+                    <a href="index.html">
+                        <span class="material-symbols-outlined">
+                            change_circle
+                            </span>
+                        <h3>Alterar Estufa</h3>
                     </a>
                     <a class="btn-logout" onclick="limparSessao()">
                         <span class="material-icons-sharp">logout</span>

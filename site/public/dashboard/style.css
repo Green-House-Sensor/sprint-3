@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Righteous&family=Sarala&display=swap');
 
 /* COMEÇO ESQUERDA */
-aside {
+/* aside {
     background: var(--color-light);
     padding-right: 5rem;
     padding-bottom: 55%;
@@ -83,7 +83,7 @@ aside .sidebar a:hover {
 
 aside .sidebar a:hover span {
     margin-left: 0.8rem;
-}
+} */
 
 */ main {
     background-color: rgb(213, 213, 213);

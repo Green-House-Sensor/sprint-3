@@ -17,6 +17,10 @@
 
 .simulador h4 {
    cursor: pointer;
+   font-size: larger;
+   background-color: rgb(202, 202, 202);
+   padding: 12px;
+   border-radius: 12px;
 }
 
 .solicitador {
