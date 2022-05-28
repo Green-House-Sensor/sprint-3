@@ -101,26 +101,26 @@ INSERT INTO dado(fkSensor, dht11Umidade, lm35Temperatura, luminosidade) VALUES
 (4, 600, 25, 700);
 
 INSERT INTO dado(fkSensor, dht11Umidade, lm35Temperatura, luminosidade) VALUES
-(1, 500, 23, 700),
-(1, 400, 20, 500),
-(1, 700, 21, 400),
-(1, 600, 27, 900),
-(1, 570, 26, 750),
-(1, 480, 25, 530),
-(1, 720, 24, 610),
-(1, 610, 23, 780),
-(1, 500, 21, 700),
-(1, 450, 29, 520),
-(1, 720, 31, 610),
-(1, 680, 21, 760),
-(1, 540, 27, 720),
-(1, 406, 20, 560),
-(1, 720, 26, 670),
-(1, 670, 22, 740),
-(1, 550, 29, 720),
-(1, 420, 25, 580),
-(1, 730, 21, 620),
-(1, 650, 25, 710);
+(1, 50, 23, 700),
+(1, 40, 20, 500),
+(1, 70, 21, 400),
+(1, 60, 27, 900),
+(1, 57, 26, 750),
+(1, 48, 25, 530),
+(1, 72, 24, 610),
+(1, 61, 23, 780),
+(1, 50, 21, 700),
+(1, 45, 29, 520),
+(1, 72, 31, 610),
+(1, 68, 21, 760),
+(1, 54, 27, 720),
+(1, 40, 20, 560),
+(1, 72, 26, 670),
+(1, 67, 22, 740),
+(1, 55, 29, 720),
+(1, 42, 25, 580),
+(1, 73, 21, 620),
+(1, 65, 25, 710);
 
 INSERT INTO dado(fkSensor, dht11Umidade, lm35Temperatura, luminosidade) VALUES
 (1, 500, 37, 700);
@@ -128,7 +128,7 @@ INSERT INTO dado(fkSensor, dht11Umidade, lm35Temperatura, luminosidade) VALUES
 INSERT INTO dado (fkSensor,dht11Umidade,lm35Temperatura, momento)
 VALUES
   (1,346,34,"2022-09-20 10:44:09");
-  
+
 DESC dado;
 use acquatec;
 select MAX(dht11_temperatura) as temperatura, 

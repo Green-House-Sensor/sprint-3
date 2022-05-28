@@ -805,9 +805,52 @@ body {
   background-color: #ffee58;
 }
 
-.ideal {
+.ideal_temp {
   background-color: #12f568;
 }
+
+.perigo-seco {
+    background-color: #5c6bc0;
+}
+  
+.perigo-umido {
+    background-color: #ff7043;
+}
+  
+.alerta-seco {
+    background-color: #42a5f5;
+}
+  
+.alerta-umido {
+    background-color: #ffee58;
+}
+  
+.ideal_umid {
+    background-color: #12f568;
+}
+
+
+.perigo-escuro {
+    background-color: #5c6bc0;
+}
+  
+.perigo-claro {
+    background-color: #ff7043;
+}
+  
+.alerta-escuro {
+    background-color: #42a5f5;
+}
+  
+.alerta-claro {
+    background-color: #ffee58;
+}
+  
+.ideal_lumin {
+    background-color: #12f568;
+}
+
+
 
 .item-regua {
   padding: 5px;

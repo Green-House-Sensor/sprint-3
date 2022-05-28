@@ -94,6 +94,20 @@
                 </div>
                 <div class="cor-alerta" id="card_1"></div>
             </div>
+            <div class="card">
+                <h1>Estufa 1</h1>
+                <div class="temperatura">
+                    <p id="estufa2">-°C</p>
+                </div>
+                <div class="cor-alerta" id="card_2"></div>
+            </div>
+            <div class="card">
+                <h1>Estufa 1</h1>
+                <div class="temperatura">
+                    <p id="estufa3">-°C</p>
+                </div>
+                <div class="cor-alerta" id="card_3"></div>
+            </div>
         </main>
         <!-- FIM MAIN (MEIO)  -->
 
@@ -117,7 +131,7 @@
 		}
 
         setInterval(() => {
-			sendData();
+            sendData()
 		}, 2000);
         setTimeout(atualizacaoPeriodica, 5000);
     }
@@ -133,9 +147,13 @@
 
                         var dados = {
                             temperatura: resposta[0].temperatura,
+                            umidade: resposta[0].umidade,
+                            luminosidade: resposta[0].luminosidade,
+
+                            
                         }
 
-                        alertar(resposta[0].temperatura, idEstufa);
+                        alertar(resposta[0].temperatura,resposta[0].umidade,resposta[0].luminosidade, idEstufa);
                     });
                 } else {
 
@@ -148,35 +166,95 @@
 
     }
 
-    function alertar(temperatura, idEstufa) {
-        var limites = {
-            muito_quente: 35,
-            quente: 30,
-            ideal: 20,
-            frio: 10,
-            muito_frio: 5
+    function alertar(temperatura, umidade, luminosidade, idEstufa) {
+        var limitesTemp = {
+            muito_quente: 22,
+            quente: 19,
+            ideal_temp: 16,
+            frio: 13,
+            muito_frio: 9
+        };
+        var limitesUmid = {
+            muito_umido: 70,
+            umido: 64,
+            ideal_umid: 59,
+            seco: 54,
+            muito_seco: 50
+        };
+        var limitesLumin = {
+            muito_claro: 950,
+            claro: 800,
+            ideal_lumin: 730,
+            escuro: 650,
+            muito_escuro: 550
         };
 
         var classe_temperatura = 'cor-alerta';
+        var classe_umidade = 'cor-alerta';
+        var classe_luminosidade = 'cor-alerta';
 
-        if (temperatura >= limites.muito_quente) {
+        if (temperatura >= limitesTemp.muito_quente) {
             classe_temperatura = 'cor-alerta perigo-quente';
             console.log("caiu no 1")
         }
-        else if (temperatura < limites.muito_quente && temperatura >= limites.quente) {
+        else if (temperatura < limitesTemp.muito_quente && temperatura >= limitesTemp.quente) {
             classe_temperatura = 'cor-alerta alerta-quente';
             console.log("caiu no 2")
         }
-        else if (temperatura < limites.quente && temperatura > limites.frio) {
-            classe_temperatura = 'cor-alerta ideal';
+        else if (temperatura < limitesTemp.quente && temperatura > limitesTemp.frio) {
+            classe_temperatura = 'cor-alerta ideal_temp';
             console.log("caiu no 3")
         }
-        else if (temperatura <= limites.frio && temperatura > limites.muito_frio) {
+        else if (temperatura <= limitesTemp.frio && temperatura > limitesTemp.muito_frio) {
             classe_temperatura = 'cor-alerta alerta-frio';
             console.log("caiu no 4")
         }
-        else if (temperatura < limites.min_temperatura) {
+        else if (temperatura < limitesTemp.min_temperatura) {
             classe_temperatura = 'cor-alerta perigo-frio';
+            console.log("caiu no 5")
+        }
+
+
+        if (umidade >= limitesUmid.muito_umido) {
+            classe_umidade = 'cor-alerta perigo-umido';
+            console.log("caiu no 1")
+        }
+        else if (umidade < limitesUmid.muito_umido && umidade >= limitesUmid.umido) {
+            classe_umidade = 'cor-alerta alerta-umido';
+            console.log("caiu no 2")
+        }
+        else if (umidade < limitesUmid.umido && umidade > limitesUmid.seco) {
+            classe_umidade = 'cor-alerta ideal_umid';
+            console.log("caiu no 3")
+        }
+        else if (umidade <= limitesUmid.seco && umidade > limitesUmid.muito_seco) {
+            classe_umidade = 'cor-alerta alerta-seco';
+            console.log("caiu no 4")
+        }
+        else if (umidade < limitesUmid.min_luminosidade) {
+            classe_umidade = 'cor-alerta perigo-seco';
+            console.log("caiu no 5")
+        }
+
+
+        if (luminosidade >= limitesLumin.muito_claro) {
+            classe_luminosidade = 'cor-alerta perigo-claro';
+            console.log("caiu no 1")
+        }
+        else if (luminosidade < limitesLumin.muito_claro && luminosidade >= limitesLumin.claro) {
+            classe_luminosidade = 'cor-alerta alerta-claro';
+            console.log("caiu no 2")
+        }
+        else if (luminosidade < limitesLumin.claro && luminosidade > limitesLumin.seco) {
+            classe_luminosidade = 'cor-alerta ideal_lumin';
+            console.log("caiu no 3")
+        }
+        else if (luminosidade <= limitesLumin.seco && luminosidade > limitesLumin.muito_seco) {
+            classe_luminosidade = 'cor-alerta alerta-escuro';
+            console.log("caiu no 4")
+        }
+        else if (luminosidade < limitesLumin.min_luminosidade) {
+            classe_luminosidade = 'cor-alerta perigo-escuro';
             console.log("caiu no 5")
         }
 
@@ -184,7 +262,12 @@
 
         if (idEstufa == 1) {
             estufa1.innerHTML = temperatura + "°C";
-            card = card_1
+            estufa2.innerHTML = umidade + "%";
+            estufa3.innerHTML = luminosidade;
+
+            card1 = card_1
+            card2 = card_2
+            card3 = card_3
         }
         //  else if (idEstufa == 2) {
         //     temp_aquario_2.innerHTML = temperatura + "°C";
@@ -198,7 +281,9 @@
         // }
 
         // alterando
-        card.className = classe_temperatura;
+        card1.className = classe_temperatura;
+        card2.className = classe_umidade;
+        card3.className = classe_luminosidade;
 
     }
 
