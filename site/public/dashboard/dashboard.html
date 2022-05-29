@@ -128,7 +128,7 @@
 
         </main>
         <!-- FIM MAIN (MEIO)  -->
-        <div style="background-color: #2baff18f;"></div>
+        <div style="background-color: #ffd900;"></div>
         <!-- <script src="index.js"></script> -->
 </body>
 
@@ -141,7 +141,13 @@
     window.onload = obterDadosGrafico(1);
 
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
-
+    b_id.innerHTML = sessionStorage.ID_USUARIO;
+    var fk = sessionStorage.FK_USUARIO;
+    if (fk != 'null') {
+        id_cargo.innerHTML = `Dependente`
+    } else {
+        id_cargo.innerHTML = `Admin`
+    }
     // verificar_autenticacao();
 
     function alterarTitulo(idEstufa) {
@@ -214,8 +220,8 @@
                 {
                     yAxisID: 'y-temperatura',
                     label: 'Temperatura',
-                    borderColor: '#000',
-                    backgroundColor: '#ffd9008f',
+                    borderColor: '#ff2222',
+                    backgroundColor: '#fa49498f',
                     fill: true,
                     data: []
                 }
@@ -228,7 +234,7 @@
                 {
                     yAxisID: 'y-luminosidade',
                     label: 'Luminosidade',
-                    borderColor: '#FFF',
+                    borderColor: '#ffd900',
                     backgroundColor: '#ffd9008f',
                     fill: true,
                     data: []
