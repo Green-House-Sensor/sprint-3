@@ -7,14 +7,15 @@ body {
     margin: 0;
     font-family: 'Nunito', sans-serif;
 }
-.header{
+/* .header{
   border-bottom: solid 2px black;
-}
+} */
 
 .container {
     color: #5ecd32;
     display: flex;
     justify-content: space-between;
+    border-bottom: solid 2px black;
 
 }
 

@@ -1,0 +1,260 @@
+/* CSS do head da página */
+
+.containerSN{
+    display: flex;
+    height: 200px;
+    width: 100vW;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.tituloSN{
+    font-size: 45px;
+    font-family: nunito;  
+    font-weight: 600; 
+}
+
+.subTitulo1{
+    font-size: 23px;
+    font-family: nunito;  
+    font-weight: 500;
+}
+
+
+/* CSS da apresentação da história da GreenHouse*/
+
+.historia{
+    background-image: url(buried-1920x1080.png);
+    height: 95vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.historiaImg{
+    
+    background-image: url(Como\ surgimos.png);
+    height: 80%;
+    width: 70%;
+    background-repeat: no-repeat;
+    background-position: center;
+        
+}
+
+/* CSS os nossos pilares */
+
+.pilares{
+    /* background-color: blue; */
+    height: 95vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+}
+
+.pilares1{
+    display: flex;
+    flex-direction: column;
+    background-color: red;
+    height: 75vh;
+    width: 67vw;
+    /* border-radius: 50px; */
+    background: #e0e0e0;
+    box-shadow:  -20px -20px 60px #bebebe,
+                  20px 20px 60px #ffffff;    
+
+}
+
+.pilaresTitulo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 15vh;
+    width: 67vw; 
+    font-size: 45px;
+    font-family: nunito; 
+    font-weight: 600;
+    /* background-color: aqua; */
+   
+}
+
+.divisao1{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    width: 67vw;
+    height: 22vh;
+    margin-left: 8%;
+    font-size: 36px;
+    font-family: nunito; 
+    /* background-color: #159357; */
+}
+.divisao2{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    width: 67vw;
+    height: 22vh;
+    margin-left: 8%;
+    font-size: 36px;
+    font-family: nunito; 
+    /* background-color: #7f8b85; */
+}
+.divisao3{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    width: 67vw;
+    height: 22vh;
+    margin-left: 8%;
+    font-size: 36px;
+    font-family: nunito; 
+    /* background-color: #732950; */
+}
+.divisao4{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    width: 67vw;
+    height: 22vh;
+    margin-left: 8%;
+    font-size: 36px;
+    font-family: nunito; 
+    /* background-color: #e72214; */
+}
+
+.number{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 36px;
+    font-family: nunito; 
+    color: #fff; 
+    background-image: url(buried-1920x1080.png);
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+
+}
+
+/* CSS do nosso time */
+
+.time{
+        /* background-color: blue; */
+        background-image: url(buried-1920x1080.png);
+        height: 95vh;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items:center;
+
+}
+
+.timeImagens{
+    display: flex;
+    flex-direction: column;
+    height: 75vh;
+    width: 67vw;
+    background-color: #fff;
+
+
+}
+
+.timeTitulo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 15vh;
+    width: 67vw; 
+    font-size: 45px;
+    font-family: nunito; 
+    font-weight: 600;
+   
+
+}
+
+.divisaoT1{
+    display:flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 50vh;
+    width: 67vw;
+
+}
+
+.divisaoT2{
+    display:flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 50vh;
+    width: 67vw;
+    
+}
+
+.imgT1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 23px;
+    font-family: nunito; 
+    /* cursor: pointer; */
+    /* /* height: 250px ;
+    width: 250px; */
+} 
+
+.divisaoT1 img {
+    
+    height: 150px ;
+    /* width: 250px; */
+} 
+.divisaoT2 img {
+    
+    height: 150px ;
+    /* width: 250px; */
+} 
+
+.imgT2{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 23px;
+    font-family: nunito; 
+    /* cursor: pointer; */
+}
+.imgT3{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 23px;
+    font-family: nunito; 
+    /* cursor: pointer; */
+}
+.imgT4{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 23px;
+    font-family: nunito; 
+    /* cursor: pointer; */
+}
+.imgT5{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 23px;
+    font-family: nunito; 
+    /* cursor: pointer; */
+}
+.imgT6{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 23px;
+    font-family: nunito; 
+    /* cursor: pointer; */
+}
+
+
