@@ -473,7 +473,6 @@ main .insights1>div span {
 
 main .insights2{
     display: flex;
-    /* grid-template-columns: repeat(1, 1fr); */
     gap: 1.6rem;
 }
 
@@ -522,22 +521,10 @@ main .tit-chart1 {
     padding-bottom: 10rem;
 }
 
-
-/* main .insights>div.income span {
-    background: var(--color-danger);
-}
-
-main .insights>div.middle {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-} */
-
 main .insights h3 {
     margin: 1rem 0 0.6rem;
     font-size: 1rem;
 }
-
 
 /* DADOS RECENTES */
 main .recent-order {
@@ -674,7 +661,6 @@ body {
 
 .dash-right .avisos {
   width: 100%;
-  /* border: 3px solid pink; */
   color: rgb(216, 216, 216);
   font-family: "Exo 2", sans-serif;
 }
@@ -704,7 +690,6 @@ body {
 
 .dash-right .avisos .div-form textarea {
   width: 100%;
-  /* color: #E6005A; */
   border: 3px solid #e6005a;
   background-color: white;
   border-radius: 5px;
@@ -776,22 +761,6 @@ body {
   background-color: #212124;
 }
 
-/* .dash {
-  width: 75%;
-  position: relative;
-  top: 0;
-  left: 25%;
-  background-color: #161618; */
-
-  /* width: 75%;
-    display: flex;
-    background-color: #161618;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;*/
-  /* height: 100vh;
-} */
-
 .regua {
   display: flex;
   flex-wrap: wrap;
@@ -861,8 +830,6 @@ body {
     background-color: #12f568;
 }
 
-
-
 .item-regua {
   padding: 5px;
   width: 15%;
@@ -874,7 +841,6 @@ body {
 .cards {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
   height: 450px;
   width: 100%;
   align-items: center;
@@ -883,21 +849,40 @@ body {
 
 .card {
   margin: 2%;
-  width: 40%;
+  width: 38%;
   flex-wrap: wrap;
   display: flex;
   text-align: center;
   height: 180px;
   justify-content: right;
-  background-color: #212124;
+  background-color: var(--color-light);
   font-size: 20px;
+  color: var(--color-dark);
+  border-radius: 2%;
+  box-shadow: 0px 0px 10px 2px var(--color-info-dark);
+  margin-left: 4rem;
+}
+
+.card1 {
+    display: flex;
+    margin-left: 36rem;
+    margin-top: -16rem;
+    width: 100%;
+}
+
+.card2 {
+    display: flex;
+    margin-left: 36rem;
+    margin-top: -15.5rem;
+    width: 100%;
 }
 
 .card p {
   margin: 0;
   font-size: 50px;
   font-weight: lighter;
-  text-align: left;
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
 }
 
 .cards h1 {
@@ -906,7 +891,6 @@ body {
   border-bottom: solid white 1px;
   text-align: left;
   font-weight: lighter;
-  margin: 20px;
 }
 
 .temperatura,
@@ -921,7 +905,6 @@ body {
   height: 30%;
   border-radius: 50px;
   margin-top: 6%;
-  /* background-color: #c7c7c7; */
 }
 
 .btns-dash {
