@@ -109,7 +109,7 @@
                 </div>
                 <div>
                     <h3 class="tituloGraficos">
-                        <span id="tituloAquario">123</span>
+                        <span id="tituloEstufa">123</span>
                     </h3>
                 </div>
                 <div class="graph">
@@ -126,7 +126,7 @@
 
         </main>
         <!-- FIM MAIN (MEIO)  -->
-        <div style="background-color: #2baff18f;"></div>
+        <div style="background-color: #f1dd2b8f;"></div>
         <!-- <script src="index.js"></script> -->
 </body>
 
@@ -143,8 +143,8 @@
     // verificar_autenticacao();
 
     function alterarTitulo(idEstufa) {
-        var tituloAquario = document.getElementById("tituloAquario")
-        tituloAquario.innerHTML = "Últimas medidas de Temperatura e Umidade do <span style='color: #e6005a'>Aquário " + idEstufa + "</span>"
+        var tituloEstufa = document.getElementById("tituloEstufa")
+        tituloEstufa.innerHTML = "Últimas medidas de Temperatura, Umidade e Luminosidade da  <span style='color: #e6005a'> Estufa " + idEstufa + "</span>"
     }
 
     // O gráfico é construído com três funções:
@@ -223,7 +223,7 @@
                     yAxisID: 'y-luminosidade',
                     labelTemp: 'Luminosidade',
                     borderColor: '#FFF',
-                    backgroundColor: '#ffd9008f',
+                    backgroundColor: '#f1dd2b8f',
                     fill: true,
                     dataLumi: []
                 }
@@ -232,16 +232,23 @@
 
         for (i = 0; i < resposta.length; i++) {
             var registro = resposta[i];
+            var registroTemp = resposta[i];
+            var registroLumi = resposta[i];
+
 
             dados.labels.push(registro.momento);
             dados.datasets[0].data.push(registro.umidade);
 
-            dadosTemp.labelsTemp.push(registro.momento);
-            dadosTemp.datasetsTemp[0].dataTemp.push(registro.temperatura);
+            // dadosTemp.labelsTemp.push(registro.momento);
+            // dadosTemp.datasetsTemp[0].dataTemp.push(registro.temperatura);
+            // console.log(dados)
+            // console.log(dadosTemp)
+            // console.log(dadosLumi)
+            // // console.log(registro)
 
-            dadosLumi.labelsLumi.push(registro.momento);
-            dadosLumi.datasetsLumi[0].dataLumi.push(registro.temperatura);
 
+            // dadosLumi.labelsLumi.push(registro.momento);
+            // dadosLumi.datasetsLumi[0].dataLumi.push(registro.temperatura);
         }
 
         console.log(JSON.stringify(dados));
@@ -250,7 +257,7 @@
 
 
         var ctx = grafico_umid.getContext('2d');
-        window.grafico_umid = Chart.Line(ctx, {
+        window.graficos_umid = Chart.Line(ctx, {
             data: dados,
             options: {
                 responsive: true,
@@ -269,7 +276,7 @@
                         id: 'y-umidade',
                         ticks: {
                             beginAtZero: true,
-                            max: 100,
+                            max: 150,
                             min: 0
                         },
 
@@ -282,7 +289,7 @@
         });
 
         var temp = grafico_temp.getContext('2d');
-        window.grafico_temp = Chart.Line(temp, {
+        window.graficos_temp = Chart.Line(temp, {
             dataTemp: dadosTemp,
             options: {
                 responsive: true,
@@ -301,7 +308,7 @@
                         id: 'y-temperatura',
                         ticks: {
                             beginAtZero: true,
-                            max: 100,
+                            max: 150,
                             min: 0
                         },
 
@@ -314,7 +321,7 @@
         });
 
         var lumi = grafico_lumi.getContext('2d');
-        window.grafico_lumi = Chart.Line(lumi, {
+        window.graficos_lumi = Chart.Line(lumi, {
             dataLumi: dadosLumi,
             options: {
                 responsive: true,
@@ -333,7 +340,7 @@
                         id: 'y-luminosidade',
                         ticks: {
                             beginAtZero: true,
-                            max: 100,
+                            max: 1000,
                             min: 0
                         },
 
@@ -372,25 +379,30 @@
                     // tirando e colocando valores no gráfico
                     dados.labels.shift(); // apagar o primeiro
                     dados.labels.push(novoRegistro[0].momento); // incluir um novo momento
-
-                    dadosTemp.labelsTemp.shift(); // apagar o primeiro
-                    dadosTemp.labelsTemp.push(novoRegistro[0].momento); // incluir um novo momento
                     
                     dados.datasets[0].data.shift();  // apagar o primeiro de umidade
                     dados.datasets[0].data.push(novoRegistro[0].umidade); // incluir uma nova medida de umidade
                     
-                    // TESTE
+                    // Temperatura
 
                     dadosTemp.labelsTemp.shift(); // apagar o primeiro
-                    dadosTemp.labelsTemp.push(novoRegistro[1].momento); // incluir um novo momento
+                    dadosTemp.labelsTemp.push(novoRegistro[0].momento); // incluir um novo momento
                     
-                    dadosTemp.datasets[1].dataTemp.shift();  // apagar o primeiro de umidade
-                    dadosTemp.datasets[1].dataTemp.push(novoRegistro[1].temperatura); // incluir uma nova medida de umidade
+                    dadosTemp.datasetsTemp[0].dataTemp.shift();  // apagar o primeiro de temperatura
+                    dadosTemp.datasetsTemp[0].dataTemp.push(novoRegistro[0].temperatura); // incluir uma nova medida de temperatura
 
-                    window.grafico_umid.update();
-                    window.grafico_temp.update();
-                    window.grafico_lumi.update();
+                    // Luminosidade
 
+                    dadosLumi.labelsLumi.shift(); // apagar o primeiro
+                    dadosLumi.labelsLumi.push(novoRegistro[0].momento); // incluir um novo momento
+                    
+                    dadosLumi.datasetsLumi[0].dataLumi.shift();  // apagar o primeiro de luminosidade
+                    dadosLumi.datasetsLumi[0].dataLumi.push(novoRegistro[0].luminosidade); // incluir uma nova medida de luminosidade
+
+                    window.graficos_umid.update();
+                    window.graficos_temp.update();
+                    window.graficos_lumi.update();
+                    // console.log(novoRegistro)
 
                     // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
                     proximaAtualizacao = setTimeout(() => atualizarGrafico(idEstufa, dados, dadosTemp, dadosLumi), 1000);

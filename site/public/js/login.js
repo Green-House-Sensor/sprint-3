@@ -22,11 +22,7 @@ function entrar() {
                 sessionStorage.LOGIN_USUARIO = json.login;
                 sessionStorage.NOME_USUARIO = json.nome;
                 sessionStorage.ID_USUARIO = json.id;
-<<<<<<< HEAD
                 sessionStorage.FK_USUARIO = json.fkDependente;
-=======
-                sessionStorage.FK_USUARIO = json.fkDependente
->>>>>>> 6779fcaa3a416dc33ff09bd5236376d43092cb69
 
                 setTimeout(function () {
                     window.location = "/index.html";
