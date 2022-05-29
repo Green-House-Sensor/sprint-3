@@ -83,7 +83,7 @@ summary:hover {
     border: 2px #3d3d3d solid;
     padding: 8px;
     border-radius: 6px;
-	transition: all 250ms;
+	transition: all 300ms;
 }
 
 .sim:hover {
