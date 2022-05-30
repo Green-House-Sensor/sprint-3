@@ -60,7 +60,6 @@ JOIN sensor ON fkSensor = idSensor
 JOIN estufa ON fkEstufa = idEstufa where fkSensor = 1
                     order by idDado desc limit 7;
 
-
 SELECT MAX(lm35Temperatura) FROM dado;
 SELECT * FROM estufa;
 select * from sensor;
@@ -161,21 +160,14 @@ CREATE TABLE acesso(
     FOREIGN KEY(fkEstufa) REFERENCES estufa(idEstufa)
 );
 
-CREATE TABLE sensor(
-	idSensor INT IDENTITY(1,1),
-    fkEstufa INT,
-    PRIMARY KEY (idSensor, fkEstufa),
-    localizacao VARCHAR(45)
-);
-
 CREATE TABLE dado(
-	idDado INT IDENTITY(1,1),
-    fkSensor INT,
-    PRIMARY KEY(idDado, fkSensor),
+	idDado INT PRIMARY KEY IDENTITY(1,1),
+    fkEstufa INT,
     dht11Umidade DECIMAL,
     lm35Temperatura DECIMAL,
     luminosidade DECIMAL,
-    FOREIGN KEY(fkSensor) REFERENCES sensor(idSensor)
+    momento DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY(fkEstufa) REFERENCES estufa(idEstufa)
 );
 
 

@@ -149,7 +149,7 @@
     }
 
     function obterdados(idEstufa) {
-        fetch(`/medidas/tempo-real/${idEstufa}`)
+        fetch(`/medidas/medidaskpi/${idEstufa}`)
             .then(resposta => {
 
                 if (resposta.ok) {
@@ -207,10 +207,12 @@
         if (temperatura >= limitesTemp.muito_quente) {
             classe_temperatura = 'cor-alerta perigo-quente';
             console.log("caiu no 1")
+            alert("Perigo!!! esta muito quente")
         }
         else if (temperatura < limitesTemp.muito_quente && temperatura >= limitesTemp.quente) {
             classe_temperatura = 'cor-alerta alerta-quente';
             console.log("caiu no 2")
+            alert("Atenção esta esquentando")
         }
         else if (temperatura < limitesTemp.quente && temperatura > limitesTemp.frio) {
             classe_temperatura = 'cor-alerta ideal_temp';
@@ -229,6 +231,7 @@
         if (umidade >= limitesUmid.muito_umido) {
             classe_umidade = 'cor-alerta perigo-umido';
             console.log("caiu no 1")
+            alert("Perigo!!! esta muito umido")
         }
         else if (umidade < limitesUmid.muito_umido && umidade >= limitesUmid.umido) {
             classe_umidade = 'cor-alerta alerta-umido';
@@ -251,6 +254,8 @@
         if (luminosidade >= limitesLumin.muito_claro) {
             classe_luminosidade = 'cor-alerta perigo-claro';
             console.log("caiu no 1")
+            alert("Perigo!!! esta muito luminoso")
+
         }
         else if (luminosidade < limitesLumin.muito_claro && luminosidade >= limitesLumin.claro) {
             classe_luminosidade = 'cor-alerta alerta-claro';

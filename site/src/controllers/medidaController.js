@@ -21,6 +21,24 @@ function buscarUltimasMedidas(req, res) {
     });
 }
 
+function medidaskpi(req, res) {
+
+    var idEstufa = req.params.idEstufa;
+
+    console.log(`Recuperando medidas em tempo real`);
+
+    medidaModel.medidaskpi(idEstufa).then(function (resultado) {
+        if (resultado.length > 0) {
+            res.status(200).json(resultado);
+        } else {
+            res.status(204).send("Nenhum resultado encontrado!")
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+        console.log("Houve um erro ao buscar as ultimas medidas.", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
 
 function buscarMedidasEmTempoReal(req, res) {
 
@@ -43,6 +61,7 @@ function buscarMedidasEmTempoReal(req, res) {
 
 module.exports = {
     buscarUltimasMedidas,
-    buscarMedidasEmTempoReal
+    buscarMedidasEmTempoReal,
+    medidaskpi
 
 }

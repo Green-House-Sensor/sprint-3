@@ -169,9 +169,9 @@
     function obterDadosGrafico(idEstufa) {
         alterarTitulo(idEstufa)
 
-        if (proximaAtualizacao != undefined) {
-            clearTimeout(proximaAtualizacao);
-        }
+        // if (proximaAtualizacao != undefined) {
+        //     clearTimeout(proximaAtualizacao);
+        // }
 
         fetch(`/medidas/ultimas/${idEstufa}`, { cache: 'no-store' }).then(function (response) {
             if (response.ok) {

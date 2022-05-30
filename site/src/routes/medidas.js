@@ -11,4 +11,7 @@ router.get("/tempo-real/:idEstufa", function (req, res) {
     medidaController.buscarMedidasEmTempoReal(req, res);
 })
 
+router.get("/medidaskpi/:idEstufa", function (req, res) {
+    medidaController.medidaskpi(req, res);
+})
 module.exports = router;
