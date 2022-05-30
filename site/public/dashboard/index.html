@@ -79,10 +79,7 @@
                 <a href="dashboard.html">
                     <div class="estufa1"><span>Estufa 1</span><img src="../assets/imgs/estufa.png" alt="">
                         <div class="problema1">
-                            <div class="estadoc">Estado Critico</div>
-                            <div class="probtemp">Temperatura Alta!</div>
-                            <div class="probumi">Umidade Alta!</div>
-                            <div class="problumi">Luminosidade Baixa!</div>
+                            <div class="temp_aquario_1" id="estufa_1">Estado Critico</div>
                         </div>
                     </div>
                 </a>
@@ -91,59 +88,30 @@
                     <div class="estufa2"><span>Estufa 2</span>
                         <img src="../assets/imgs/estufa.png" alt="">
                         <div class="problema2">
-                            <div class="estadoc">Estado Critico</div>
-                            <div class="probtemp"></div>
-                            <div class="probumi"></div>
-                            <div class="problumi">Luminosidade Baixa!</div>
+                            <div class="temp_aquario_2" id="estufa_2">Estado Critico</div>
 
                         </div>
                     </div>
                 </a>
                 <a href="dashboard.html">
-                    <div class="estufa3"><span>Estufa 3 </span><img src="../assets/imgs/estufa.png" alt="">
+                    <div class="estufa3"><span>Estufa 3 </span>
+                        <img src="../assets/imgs/estufa.png" alt="">
                         <div class="problema3">
-                            <div class="estadoc">Estado Critico</div>
-                            <div class="probtemp">Temperatura Alta!</div>
-                            <div class="probumi"></div>
-                            <div class="problumi"></div>
+                            <div class="temp_aquario_3" id="estufa_3">Estado Critico</div>
                         </div>
                     </div>
                 </a>
             </div>
             <div class="aviso-baixo">
                 <a href="dashboard.html">
-                    <div class="estufa4"><span>Estufa 4</span><img src="../assets/imgs/estufa.png" alt="">
-                        <div class="problema4">
-                            <div class="estadoc">Estado Critico</div>
-                            <div class="probtemp">Temperatura Alta!</div>
-                            <div class="probumi">Umidade Alta!</div>
-                            <div class="problumi">Luminosidade Baixa!</div>
-                        </div>
-                    </div>
-                </a>
-
-                <a href="dashboard.html">
-                    <div class="estufa5"><span>Estufa 5</span>
+                    <div class="estufa4"><span>Estufa 4</span>
                         <img src="../assets/imgs/estufa.png" alt="">
-                        <div class="problema5">
-                            <div class="estadoa">Estado De Alerta</div>
-                            <div class="probtemp"></div>
-                            <div class="probumi"></div>
-                            <div class="problumi">Luminosidade em Alerta!</div>
-
+                        <div class="problema4">
+                            <div class="temp_aquario_4" id="estufa_2">Estado Critico</div>
                         </div>
                     </div>
                 </a>
-                <a href="dashboard.html">
-                    <div class="estufa6"><span>Estufa 6</span><img src="../assets/imgs/estufa.png" alt="">
-                        <div class="problema6">
-                            <div class="estadoa">Estado De Alerta</div>
-                            <div class="probtemp">Temperatura em Alerta!</div>
-                            <div class="probumi"> Umidade em Alerta!</div>
-                            <div class="problumi"></div>
-                        </div>
-                    </div>
-                </a>
+                
             </div>
     </div>
     </main>
@@ -154,3 +122,184 @@
 </body>
 
 </html>
+
+<script>
+
+    function atualizacaoPeriodica() {
+        obterdados(1);
+        obterdados(2);
+        obterdados(3);
+        obterdados(4);
+
+        function sendData() {
+			var http = new XMLHttpRequest();
+			http.open('POST', 'http://localhost:3000/api/sendData', false);
+			http.send(null);
+		}
+
+        setInterval(() => {
+            sendData()
+		}, 2000);
+        setTimeout(atualizacaoPeriodica, 5000);
+    }
+
+    function obterdados(idEstufa) {
+        fetch(`/medidas/medidaskpi/${idEstufa}`)
+            .then(resposta => {
+
+                if (resposta.ok) {
+                    resposta.json().then(resposta => {
+
+                        console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+
+                        var dados = {
+                            temperatura: resposta[0].temperatura,
+                            umidade: resposta[0].umidade,
+                            luminosidade: resposta[0].luminosidade,
+
+                        }
+
+                        alertar(resposta[0].temperatura,resposta[0].umidade,resposta[0].luminosidade, idEstufa);
+                    });
+                } else {
+
+                    console.error('Nenhum dado encontrado ou erro na API');
+                }
+            })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados do aquario p/ gráfico: ${error.message}`);
+            });
+
+    }
+
+    function alertar(temperatura, umidade, luminosidade, idEstufa) {
+        var limitesTemp = {
+            muito_quente: 22,
+            quente: 19,
+            ideal_temp: 16,
+            frio: 13,
+            muito_frio: 9
+        };
+        var limitesUmid = {
+            muito_umido: 70,
+            umido: 64,
+            ideal_umid: 59,
+            seco: 54,
+            muito_seco: 50
+        };
+        var limitesLumin = {
+            muito_claro: 950,
+            claro: 800,
+            ideal_lumin: 730,
+            escuro: 650,
+            muito_escuro: 550
+        };
+
+        var classe_temperatura = 'cor-alerta';
+        var classe_umidade = 'cor-alerta';
+        var classe_luminosidade = 'cor-alerta';
+
+        if (temperatura >= limitesTemp.muito_quente) {
+            classe_temperatura = 'cor-alerta perigo-quente';
+            console.log("caiu no 1")
+            alert("Perigo!!! esta muito quente")
+        }
+        else if (temperatura < limitesTemp.muito_quente && temperatura >= limitesTemp.quente) {
+            classe_temperatura = 'cor-alerta alerta-quente';
+            console.log("caiu no 2")
+            alert("Atenção esta esquentando")
+        }
+        else if (temperatura < limitesTemp.quente && temperatura > limitesTemp.frio) {
+            classe_temperatura = 'cor-alerta ideal_temp';
+            console.log("caiu no 3")
+        }
+        else if (temperatura <= limitesTemp.frio && temperatura > limitesTemp.muito_frio) {
+            classe_temperatura = 'cor-alerta alerta-frio';
+            console.log("caiu no 4")
+        }
+        else if (temperatura < limitesTemp.min_temperatura) {
+            classe_temperatura = 'cor-alerta perigo-frio';
+            console.log("caiu no 5")
+        }
+
+
+        if (umidade >= limitesUmid.muito_umido) {
+            classe_umidade = 'cor-alerta perigo-umido';
+            console.log("caiu no 1")
+            alert("Perigo!!! esta muito umido")
+        }
+        else if (umidade < limitesUmid.muito_umido && umidade >= limitesUmid.umido) {
+            classe_umidade = 'cor-alerta alerta-umido';
+            console.log("caiu no 2")
+        }
+        else if (umidade < limitesUmid.umido && umidade > limitesUmid.seco) {
+            classe_umidade = 'cor-alerta ideal_umid';
+            console.log("caiu no 3")
+        }
+        else if (umidade <= limitesUmid.seco && umidade > limitesUmid.muito_seco) {
+            classe_umidade = 'cor-alerta alerta-seco';
+            console.log("caiu no 4")
+        }
+        else if (umidade < limitesUmid.min_luminosidade) {
+            classe_umidade = 'cor-alerta perigo-seco';
+            console.log("caiu no 5")
+        }
+
+
+        if (luminosidade >= limitesLumin.muito_claro) {
+            classe_luminosidade = 'cor-alerta perigo-claro';
+            console.log("caiu no 1")
+            alert("Perigo!!! esta muito luminoso")
+
+        }
+        else if (luminosidade < limitesLumin.muito_claro && luminosidade >= limitesLumin.claro) {
+            classe_luminosidade = 'cor-alerta alerta-claro';
+            console.log("caiu no 2")
+        }
+        else if (luminosidade < limitesLumin.claro && luminosidade > limitesLumin.seco) {
+            classe_luminosidade = 'cor-alerta ideal_lumin';
+            console.log("caiu no 3")
+        }
+        else if (luminosidade <= limitesLumin.seco && luminosidade > limitesLumin.muito_seco) {
+            classe_luminosidade = 'cor-alerta alerta-escuro';
+            console.log("caiu no 4")
+        }
+        else if (luminosidade < limitesLumin.min_luminosidade) {
+            classe_luminosidade = 'cor-alerta perigo-escuro';
+            console.log("caiu no 5")
+        }
+
+        var card;
+
+        if (idEstufa == 1) {
+            estufa_1.innerHTML = 
+            estufa_2.innerHTML = 
+            estufa_3.innerHTML = 
+
+            card1 = card_1
+            card2 = card_2
+            card3 = card_3
+        }
+         else if (idEstufa == 2) {
+            // temp_aquario_2.innerHTML = temperatura + "°C";
+            estufa_1.innerHTML = ``
+            card = card_2
+        } else if (idEstufa == 3) {
+            // temp_aquario_3.innerHTML = temperatura + "°C";
+            estufa_1.innerHTML = ``
+
+            card = card_3
+        } else if (idEstufa == 4) {
+            // temp_aquario_4.innerHTML = temperatura + "°C";
+            estufa_1.innerHTML = ``
+
+            card = card_4
+        }
+
+        // alterando
+        card1.className = classe_temperatura;
+        card2.className = classe_umidade;
+        card3.className = classe_luminosidade;
+
+    }
+</script>
