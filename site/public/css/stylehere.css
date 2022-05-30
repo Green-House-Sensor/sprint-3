@@ -26,6 +26,7 @@
 
 .historia{
     background-image: url(buried-1920x1080.png);
+    /* background-size: cover; */
     height: 95vh;
     width: 100%;
     display: flex;
@@ -40,8 +41,8 @@
     height: 80%;
     width: 70%;
     background-repeat: no-repeat;
-    background-position: center;
-        
+    /* background-position: center; */
+    background-size: cover;
 }
 
 /* CSS os nossos pilares */
@@ -74,7 +75,7 @@
     align-items: center;
     height: 15vh;
     width: 67vw; 
-    font-size: 45px;
+    font-size: 37px;
     font-family: nunito; 
     font-weight: 600;
     /* background-color: aqua; */
@@ -169,7 +170,7 @@
     align-items: center;
     height: 15vh;
     width: 67vw; 
-    font-size: 45px;
+    font-size: 37px;
     font-family: nunito; 
     font-weight: 600;
    
