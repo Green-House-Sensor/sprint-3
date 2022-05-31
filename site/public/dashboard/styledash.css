@@ -222,8 +222,8 @@ main .legenda-pai {
     align-items: center;
     flex-direction: row;
     justify-content: space-around;
-    padding-right: 200px;
-    margin-left: 100px;
+    padding-right: 100px;
+    margin-left: 10px;
 }
 
 main .legenda {
@@ -809,7 +809,6 @@ body {
     background-color: #12f568;
 }
 
-
 .perigo-escuro {
     background-color: #5c6bc0;
 }
@@ -851,28 +850,35 @@ body {
     border-radius: 2%;
     box-shadow: 0px 0px 10px 2px var(--color-info-dark);
     margin-left: 4rem;
-
 }
 
 .card_dependente button{
-    border-radius: 20px;
-    border-color: 5px solid black;
+    border-radius: 10px;
+    border: 1px solid black;
     padding: 0.3rem 0rem;
     width: 8.5rem;
     height: 40px;
-    border: none;
     outline: none;
     text-transform: uppercase;
     font-weight: 700;
     letter-spacing: 1px;
     cursor: pointer;
     box-shadow: none;
-    transition: all 300ms;
-    margin-bottom: 10px;
+    transition: all 320ms;
+    margin-top: -100px;
+}
+
+.tamanho {
+    margin-bottom: 8px;
+}
+
+.card_dependente button:hover {
+    color: var(--color-white);
+    background-color: var(--color-dark);
 }
 
 .card_dependente input{
-    margin-top: 10px;
+    margin-top: 3px;
     width: 200px;
 }
 
@@ -975,4 +981,29 @@ body {
   border-radius: var(--border-radius-1);
   margin: 5px;
   cursor: pointer;
+}
+
+.cardEstufa1{
+    display: flex;
+    justify-content: center;
+    margin-right: 40px;
+}
+
+.cardEstufa2{
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+    margin-right: 40px;
+}
+.cardEstufa3{
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+    margin-right: 40px;
+}
+.cardEstufa4{
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+    margin-right: 40px;
 }

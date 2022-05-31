@@ -44,7 +44,7 @@
                     <span class="material-icons-sharp">grid_view</span>
                     <h3>Dashboard</h3>
                 </a>
-                <a href="solicitacao.html">
+                <a onclick="solicitar()">
                     <span class="material-icons-sharp">request_page</span>
                     <h3>Solicitar serviço</h3>
                 </a>
@@ -76,6 +76,17 @@
         </aside>
         <!-- FIM ESQUERDA  -->
         <main>
+            <div class="legenda-pai">
+                <div class="legenda">
+                    <b class="text-legenda">NORMAL</b>
+                </div>
+                <div class="legenda1">
+                    <b class="text-legenda1">ATENÇÃO</b>
+                </div>
+                <div class="legenda2">
+                    <b class="text-legenda2">CRÍTICO</b>
+                </div>
+            </div>
             <H1>Estufas Ativas</h1>
             <div class="aviso-cima">
                 <a href="dashboard.html">
@@ -87,46 +98,49 @@
                             <p id="umid1">-%</p>
                             <p id="lumi1">-</p>
 
-                            <div class="cor-alerta" id="estufa_1"></div>
+                            <div class="cor-alerta" id="card_1"></div>
                         </div>
                     </div>
                 </a>
 
                 <a href="dashboard.html">
-                    <div class="estufa"><span>Estufa 2</span>
+                    <div class="estufa2"><span>Estufa 2</span>
                         <img src="../assets/imgs/estufa.png" alt="">
                         <div class="problema2">
                             <p id="estado2">Estado</p>
                             <p id="temp2">-°C</p>
                             <p id="umid2">-%</p>
                             <p id="lumi2">-</p>
-                            <div class="cor-alerta" id="estufa_2"></div>
+                            <div class="cor-alerta" id="card_2"></div>
                         </div>
                     </div>
                 </a>
+            </div>
+
+            <div class="aviso-baixo">
                 <a href="dashboard.html">
-                    <div class="estufa"><span>Estufa 3 </span>
+                    <div class="estufa3"><span>Estufa 3 </span>
                         <img src="../assets/imgs/estufa.png" alt="">
                         <div class="problema3">
                             <p id="estado3">Estado</p>
                             <p id="temp3">-°C</p>
                             <p id="umid3">-%</p>
                             <p id="lumi3">-</p>
-                            <div class="cor-alerta" id="estufa_3"></div>
+                            <div class="cor-alerta" id="card_3"></div>
                         </div>
                     </div>
                 </a>
-            </div>
-            <div class="aviso-baixo">
+            
+            
                 <a href="dashboard.html">
-                    <div class="estufa"><span>Estufa 4</span>
+                    <div class="estufa4"><span>Estufa 4</span>
                         <img src="../assets/imgs/estufa.png" alt="">
                         <div class="problema4">
                             <p id="estado4">Estado</p>
                             <p id="temp4">-°C</p>
                             <p id="umid4">-%</p>
                             <p id="lumi4">-</p>
-                            <div class="cor-alerta" id="estufa_2"></div>
+                            <div class="cor-alerta" id="card_4"></div>
                         </div>
                     </div>
                 </a>
@@ -139,6 +153,27 @@
 </body>
 
 </html>
+
+<script>
+    function dependente(){
+        var fk = sessionStorage.FK_USUARIO;
+        if(fk=='null'){
+            window.location = "./dependente.html";
+        }else{
+            alert(`Você não tem permissão para adicionar dependente`)
+        }
+    }
+    function solicitar() {
+        var fk = sessionStorage.FK_USUARIO;
+
+        if (fk == 'null') {
+            window.location = "./solicitacao.html"
+        } else {
+            alert ("Você não tem permissão para fazer a solicitação")
+        }
+    }
+
+</script>
 
 <script>
     function atualizacaoPeriodica() {
@@ -155,7 +190,7 @@
 
         setInterval(() => {
             sendData()
-        }, 2000);
+        }, 10000);
         setTimeout(atualizacaoPeriodica, 5000);
     }
 
@@ -196,6 +231,7 @@
             frio: 13,
             muito_frio: 9
         };
+
         var limitesUmid = {
             muito_umido: 70,
             umido: 64,
@@ -203,6 +239,7 @@
             seco: 54,
             muito_seco: 50
         };
+
         var limitesLumin = {
             muito_claro: 950,
             claro: 800,
@@ -215,129 +252,164 @@
         var classe_umidade = 'cor-alerta';
         var classe_luminosidade = 'cor-alerta';
 
-        if (temperatura >= limitesTemp.muito_quente) {
-            classe_temperatura = 'cor-alerta perigo-quente';
-            console.log("caiu no 1")
+        if(temperatura >= limitesTemp.muito_quente||
+        temperatura < limitesTemp.muito_frio||
+        umidade >= limitesUmid.muito_umido||
+        umidade < limitesUmid.muito_seco||
+        luminosidade >= limitesLumin.muito_claro||
+        luminosidade < limitesLumin.muito_escuro){
             estado1.innerHTML = `Estado crítico`
             estado2.innerHTML = `Estado crítico`
             estado3.innerHTML = `Estado crítico`
             estado4.innerHTML = `Estado crítico`
+        }else if(temperatura < limitesTemp.muito_quente && 
+        temperatura >= limitesTemp.quente||
+        temperatura <= limitesTemp.frio && 
+        temperatura > limitesTemp.muito_frio||
+        umidade < limitesUmid.muito_umido && 
+        umidade >= limitesUmid.umido||
+        umidade <= limitesUmid.seco && 
+        umidade > limitesUmid.muito_seco||
+        luminosidade < limitesLumin.muito_claro && 
+        luminosidade >= limitesLumin.claro||
+        luminosidade <= limitesLumin.escuro && 
+        luminosidade > limitesLumin.muito_escuro){
+            estado1.innerHTML = `Estado de alerta`
+            estado2.innerHTML = `Estado de alerta`
+            estado3.innerHTML = `Estado de alerta`
+            estado4.innerHTML = `Estado de alerta`
+        }else if(temperatura < limitesTemp.quente && 
+        temperatura > limitesTemp.frio&&
+        umidade < limitesUmid.umido && 
+        umidade > limitesUmid.seco&&
+        luminosidade < limitesLumin.claro &&
+         luminosidade > limitesLumin.escuro){
+            estado1.innerHTML = `Estado normal`
+            estado2.innerHTML = `Estado normal`
+            estado3.innerHTML = `Estado normal`
+            estado4.innerHTML = `Estado normal`
+         }
+
+        if (temperatura >= limitesTemp.muito_quente) {
+            classe_temperatura = 'cor-alerta perigo-quente';
+            console.log("caiu no 1")
+            // estado1.innerHTML = `Estado crítico`
+            // estado2.innerHTML = `Estado crítico`
+            // estado3.innerHTML = `Estado crítico`
+            // estado4.innerHTML = `Estado crítico`
         }
         else if (temperatura < limitesTemp.muito_quente && temperatura >= limitesTemp.quente) {
             classe_temperatura = 'cor-alerta alerta-quente';
             console.log("caiu no 2")
-            estado1.innerHTML = `Estado de alerta`
-            estado2.innerHTML = `Estado de alerta`
-            estado3.innerHTML = `Estado de alerta`
-            estado4.innerHTML = `Estado de alerta`
+            // estado1.innerHTML = `Estado de alerta`
+            // estado2.innerHTML = `Estado de alerta`
+            // estado3.innerHTML = `Estado de alerta`
+            // estado4.innerHTML = `Estado de alerta`
         }
         else if (temperatura < limitesTemp.quente && temperatura > limitesTemp.frio) {
             classe_temperatura = 'cor-alerta ideal_temp';
             console.log("caiu no 3")
-            estado1.innerHTML = `Estado normal`
-            estado2.innerHTML = `Estado normal`
-            estado3.innerHTML = `Estado normal`
-            estado4.innerHTML = `Estado normal`
+            // estado1.innerHTML = `Estado normal`
+            // estado2.innerHTML = `Estado normal`
+            // estado3.innerHTML = `Estado normal`
+            // estado4.innerHTML = `Estado normal`
         }
         else if (temperatura <= limitesTemp.frio && temperatura > limitesTemp.muito_frio) {
             classe_temperatura = 'cor-alerta alerta-frio';
             console.log("caiu no 4")
-            estado1.innerHTML = `Estado de alerta`
-            estado2.innerHTML = `Estado de alerta`
-            estado3.innerHTML = `Estado de alerta`
-            estado4.innerHTML = `Estado de alerta`
+            // estado1.innerHTML = `Estado de alerta`
+            // estado2.innerHTML = `Estado de alerta`
+            // estado3.innerHTML = `Estado de alerta`
+            // estado4.innerHTML = `Estado de alerta`
         }
-        else if (temperatura < limitesTemp.min_temperatura) {
+        else if (temperatura < limitesTemp.muito_frio) {
             classe_temperatura = 'cor-alerta perigo-frio';
             console.log("caiu no 5")
-            estado1.innerHTML = `Estado crítico`
-            estado2.innerHTML = `Estado crítico`
-            estado3.innerHTML = `Estado crítico`
-            estado4.innerHTML = `Estado crítico`
+            // estado1.innerHTML = `Estado crítico`
+            // estado2.innerHTML = `Estado crítico`
+            // estado3.innerHTML = `Estado crítico`
+            // estado4.innerHTML = `Estado crítico`
         }
-
-
         if (umidade >= limitesUmid.muito_umido) {
             classe_umidade = 'cor-alerta perigo-umido';
             console.log("caiu no 1")
-            estado1.innerHTML = `Estado crítico`
-            estado2.innerHTML = `Estado crítico`
-            estado3.innerHTML = `Estado crítico`
-            estado4.innerHTML = `Estado crítico`
+            // estado1.innerHTML = `Estado crítico`
+            // estado2.innerHTML = `Estado crítico`
+            // estado3.innerHTML = `Estado crítico`
+            // estado4.innerHTML = `Estado crítico`
         }
         else if (umidade < limitesUmid.muito_umido && umidade >= limitesUmid.umido) {
             classe_umidade = 'cor-alerta alerta-umido';
             console.log("caiu no 2")
-            estado1.innerHTML = `Estado de alerta`
-            estado2.innerHTML = `Estado de alerta`
-            estado3.innerHTML = `Estado de alerta`
-            estado4.innerHTML = `Estado de alerta`
+            // estado1.innerHTML = `Estado de alerta`
+            // estado2.innerHTML = `Estado de alerta`
+            // estado3.innerHTML = `Estado de alerta`
+            // estado4.innerHTML = `Estado de alerta`
         }
         else if (umidade < limitesUmid.umido && umidade > limitesUmid.seco) {
             classe_umidade = 'cor-alerta ideal_umid';
             console.log("caiu no 3")
-            estado1.innerHTML = `Estado normal`
-            estado2.innerHTML = `Estado normal`
-            estado3.innerHTML = `Estado normal`
-            estado4.innerHTML = `Estado normal`
+            // estado1.innerHTML = `Estado normal`
+            // estado2.innerHTML = `Estado normal`
+            // estado3.innerHTML = `Estado normal`
+            // estado4.innerHTML = `Estado normal`
         }
         else if (umidade <= limitesUmid.seco && umidade > limitesUmid.muito_seco) {
             classe_umidade = 'cor-alerta alerta-seco';
             console.log("caiu no 4")
-            estado1.innerHTML = `Estado de alerta`
-            estado2.innerHTML = `Estado de alerta`
-            estado3.innerHTML = `Estado de alerta`
-            estado4.innerHTML = `Estado de alerta`
-
+            // estado1.innerHTML = `Estado de alerta`
+            // estado2.innerHTML = `Estado de alerta`
+            // estado3.innerHTML = `Estado de alerta`
+            // estado4.innerHTML = `Estado de alerta`
         }
-        else if (umidade < limitesUmid.min_luminosidade) {
+        else if (umidade < limitesUmid.muito_seco) {
             classe_umidade = 'cor-alerta perigo-seco';
             console.log("caiu no 5")
-            estado1.innerHTML = `Estado crítico`
-            estado2.innerHTML = `Estado crítico`
-            estado3.innerHTML = `Estado crítico`
-            estado4.innerHTML = `Estado crítico`
+            // estado1.innerHTML = `Estado crítico`
+            // estado2.innerHTML = `Estado crítico`
+            // estado3.innerHTML = `Estado crítico`
+            // estado4.innerHTML = `Estado crítico`
         }
 
         if (luminosidade >= limitesLumin.muito_claro) {
             classe_luminosidade = 'cor-alerta perigo-claro';
             console.log("caiu no 1")
-            estado1.innerHTML = `Estado crítico`
-            estado2.innerHTML = `Estado crítico`
-            estado3.innerHTML = `Estado crítico`
-            estado4.innerHTML = `Estado crítico`
+            // estado1.innerHTML = `Estado crítico`
+            // estado2.innerHTML = `Estado crítico`
+            // estado3.innerHTML = `Estado crítico`
+            // estado4.innerHTML = `Estado crítico`
         }
         else if (luminosidade < limitesLumin.muito_claro && luminosidade >= limitesLumin.claro) {
             classe_luminosidade = 'cor-alerta alerta-claro';
             console.log("caiu no 2")
-            estado1.innerHTML = `Estado de alerta`
-            estado2.innerHTML = `Estado de alerta`
-            estado3.innerHTML = `Estado de alerta`
-            estado4.innerHTML = `Estado de alerta`
+            // estado1.innerHTML = `Estado de alerta`
+            // estado2.innerHTML = `Estado de alerta`
+            // estado3.innerHTML = `Estado de alerta`
+            // estado4.innerHTML = `Estado de alerta`
         }
-        else if (luminosidade < limitesLumin.claro && luminosidade > limitesLumin.seco) {
+        else if (luminosidade < limitesLumin.claro && luminosidade > limitesLumin.escuro) {
             classe_luminosidade = 'cor-alerta ideal_lumin';
             console.log("caiu no 3")
-            estado1.innerHTML = `Estado normal`
-            estado2.innerHTML = `Estado normal`
-            estado3.innerHTML = `Estado normal`
-            estado4.innerHTML = `Estado normal`
+            // estado1.innerHTML = `Estado normal`
+            // estado2.innerHTML = `Estado normal`
+            // estado3.innerHTML = `Estado normal`
+            // estado4.innerHTML = `Estado normal`
         }
-        else if (luminosidade <= limitesLumin.seco && luminosidade > limitesLumin.muito_seco) {
+        else if (luminosidade <= limitesLumin.escuro && luminosidade > limitesLumin.muito_escuro) {
             classe_luminosidade = 'cor-alerta alerta-escuro';
             console.log("caiu no 4")
-            estado1.innerHTML = `Estado de alerta`
-            estado2.innerHTML = `Estado de alerta`
-            estado3.innerHTML = `Estado de alerta`
-            estado4.innerHTML = `Estado de alerta`
+            // estado1.innerHTML = `Estado de alerta`
+            // estado2.innerHTML = `Estado de alerta`
+            // estado3.innerHTML = `Estado de alerta`
+            // estado4.innerHTML = `Estado de alerta`
         }
-        else if (luminosidade < limitesLumin.min_luminosidade) {
+        else if (luminosidade < limitesLumin.muito_escuro) {
             classe_luminosidade = 'cor-alerta perigo-escuro';
             console.log("caiu no 5")
-            estado1.innerHTML = `Estado Crítico`
-            estado2.innerHTML = `Estado Crítico`
-            estado3.innerHTML = `Estado Crítico`
-            estado4.innerHTML = `Estado Crítico`
+            // estado1.innerHTML = `Estado Crítico`
+            // estado2.innerHTML = `Estado Crítico`
+            // estado3.innerHTML = `Estado Crítico`
+            // estado4.innerHTML = `Estado Crítico`
         }
 
         var estufa;
@@ -347,39 +419,43 @@
             umid1.innerHTML = umidade + "%"
             lumi1.innerHTML = luminosidade
 
-            estufa1 = estufa__1
-            estufa2 = estufa__2
-            estufa3 = estufa__3
+            card1 = card_1
+            card2 = card_2
+            card3 = card_3
+            card4 = card_4
         } else if (idEstufa == 2) {
             temp2.innerHTML = temperatura + "°C";
             umid2.innerHTML = umidade + "%"
             lumi2.innerHTML = luminosidade
 
-            estufa1 = estufa__1
-            estufa2 = estufa__2
-            estufa3 = estufa__3
+            card1 = card_1
+            card2 = card_2
+            card3 = card_3
+            card4 = card_4
         } else if (idEstufa == 3) {
             temp3.innerHTML = temperatura + "°C";
             umid3.innerHTML = umidade + "%"
             lumi3.innerHTML = luminosidade
 
-            estufa1 = estufa__1
-            estufa2 = estufa__2
-            estufa3 = estufa__3
+            card1 = card_1
+            card2 = card_2
+            card3 = card_3
+            card4 = card_4
         } else if (idEstufa == 4) {
             temp4.innerHTML = temperatura + "°C";
             umid4.innerHTML = umidade + "%"
             lumi4.innerHTML = luminosidade
 
-            estufa1 = estufa__1
-            estufa2 = estufa__2
-            estufa3 = estufa__3
+            card1 = card_1
+            card2 = card_2
+            card3 = card_3
+            card4 = card_4
         }
-
         // alterando
-        estufa1.className = classe_temperatura;
-        estufa2.className = classe_umidade;
-        estufa3.className = classe_luminosidade;
+        card1.className = classe_temperatura;
+        card2.className = classe_umidade;
+        card3.className = classe_luminosidade;
+        card4.className = classe_luminosidade;
 
     }
 </script>

@@ -44,7 +44,7 @@
                 <a>
                     <span class="material-icons-sharp">grid_view</span>
                     <h3>Dashboard</h3>
-                    <a href="solicitacao.html">
+                    <a onclick="solicitar()">
                         <span class="material-icons-sharp">request_page</span>
                         <h3>Solicitar serviço</h3>
                     </a>
@@ -72,7 +72,6 @@
                         <span class="material-icons-sharp">logout</span>
                         <h3>Logout</h3>
                     </a>
-
         </aside>
         <!-- FIM ESQUERDA  -->
 
@@ -90,17 +89,6 @@
                         <input type="date">
                     </div>
                 </div><br>
-                <div class="legenda-pai">
-                    <div class="legenda">
-                        <b class="text-legenda">NORMAL</b>
-                    </div>
-                    <div class="legenda1">
-                        <b class="text-legenda1">ATENÇÃO</b>
-                    </div>
-                    <div class="legenda2">
-                        <b class="text-legenda2">PERIGO</b>
-                    </div>
-                </div>
             </div>
             <div class="dash">
                 <div class="btns-dash">
@@ -132,6 +120,26 @@
 </body>
 
 </html>
+
+<script>
+    function dependente(){
+        var fk = sessionStorage.FK_USUARIO;
+        if(fk=='null'){
+            window.location = "./dependente.html";
+        }else{
+            alert(`Você não tem permissão para adicionar dependente`)
+        }
+    }
+    function solicitar() {
+        var fk = sessionStorage.FK_USUARIO;
+
+        if (fk == 'null') {
+            window.location = "./solicitacao.html"
+        } else {
+            alert ("Você não tem permissão para fazer a solicitação")
+        }
+    }
+</script>
 
 <script>
 

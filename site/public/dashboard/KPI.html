@@ -12,7 +12,10 @@
     <link rel="stylesheet" href="styledash.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://kit.fontawesome.com/4ea0191552.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+
+    <!--  -->
 
 <body onload="validarSessao(), atualizacaoPeriodica()">
     <div class="container">
@@ -38,8 +41,8 @@
             </div>
             <div class="sidebar">
                 <a href="dashboard.html">
-                <span class="material-icons-sharp">grid_view</span>
-                <h3>Dashboard</h3>
+                    <span class="material-icons-sharp">grid_view</span>
+                    <h3>Dashboard</h3>
                 </a>
                 <a href="solicitacao.html">
                     <span class="material-icons-sharp">request_page</span>
@@ -95,31 +98,103 @@
                         <b class="text-legenda1">ATENÇÃO</b>
                     </div>
                     <div class="legenda2">
-                        <b class="text-legenda2">PERIGO</b>
+                        <b class="text-legenda2">CRÍTICO</b>
                     </div>
                 </div>
             </div>
-            <div class="card">
-                <h1>Estufa 1</h1>
-                <div class="temperatura">
-                    <p id="estufa1">-°C</p>
+                <div class="cardEstufa1">
+                    <div class="card">
+                        <h1>Estufa 1</h1>
+                        <div class="temperatura">
+                            <p id="tempEstu1">-°C</p>
+                        </div>
+                        <div class="cor-alerta" id="tempcard_1"></div>
+                    </div>
+                    <div class="card">
+                        <h1>Estufa 1</h1>
+                        <div class="temperatura">
+                            <p id="umidEstu1">-%</p>
+                        </div>
+                        <div class="cor-alerta" id="umidcard_1"></div>
+                    </div>
+                    <div class="card">
+                        <h1>Estufa 1</h1>
+                        <div class="temperatura">
+                            <p id="lumiEstu1">-</p>
+                        </div>
+                        <div class="cor-alerta" id="lumicard_1"></div>
+                    </div>
                 </div>
-                <div class="cor-alerta" id="card_1"></div>
-            </div>
-            <div class="card">
-                <h1>Estufa 1</h1>
-                <div class="temperatura">
-                    <p id="estufa2">-°C</p>
+                <div class="cardEstufa2">
+                    <div class="card">
+                        <h1>Estufa 2</h1>
+                        <div class="temperatura">
+                            <p id="tempEstu2">-°C</p>
+                        </div>
+                        <div class="cor-alerta" id="tempcard_2"></div>
+                    </div>
+                    <div class="card">
+                        <h1>Estufa 2</h1>
+                        <div class="temperatura">
+                            <p id="umidEstu2">-%</p>
+                        </div>
+                        <div class="cor-alerta" id="umidcard_2"></div>
+                    </div>
+                    <div class="card">
+                        <h1>Estufa 2</h1>
+                        <div class="temperatura">
+                            <p id="lumiEstu2">-</p>
+                        </div>
+                        <div class="cor-alerta" id="lumicard_2"></div>
+                    </div>
                 </div>
-                <div class="cor-alerta" id="card_2"></div>
-            </div>
-            <div class="card">
-                <h1>Estufa 1</h1>
-                <div class="temperatura">
-                    <p id="estufa3">-°C</p>
+                <div class="cardEstufa3">
+                    <div class="card">
+                        <h1>Estufa 3</h1>
+                        <div class="temperatura">
+                            <p id="tempEstu3">-°C</p>
+                        </div>
+                        <div class="cor-alerta" id="tempcard_3"></div>
+                    </div>
+                    <div class="card">
+                        <h1>Estufa 3</h1>
+                        <div class="temperatura">
+                            <p id="umidEstu3">-%</p>
+                        </div>
+                        <div class="cor-alerta" id="umidcard_3"></div>
+                    </div>
+                    <div class="card">
+                        <h1>Estufa 3</h1>
+                        <div class="temperatura">
+                            <p id="lumiEstu3">-</p>
+                        </div>
+                        <div class="cor-alerta" id="lumicard_3"></div>
+                    </div>
                 </div>
-                <div class="cor-alerta" id="card_3"></div>
-            </div>
+                <div class="cardEstufa4">
+                    <div class="card">
+                        <h1>Estufa 4</h1>
+                        <div class="temperatura">
+                            <p id="tempEstu4">-°C</p>
+                        </div>
+                        <div class="cor-alerta" id="tempcard_4"></div>
+                    </div>
+                    <div class="card">
+                        <h1>Estufa 4</h1>
+                        <div class="temperatura">
+                            <p id="umidEstu4">-%</p>
+                        </div>
+                        <div class="cor-alerta" id="umidcard_4"></div>
+                    </div>
+                    <div class="card">
+                        <h1>Estufa 4</h1>
+                        <div class="temperatura">
+                            <p id="lumiEstu4">-</p>
+                        </div>
+                        <div class="cor-alerta" id="lumicard_4"></div>
+                    </div>
+                </div>
+
         </main>
         <!-- FIM MAIN (MEIO)  -->
 
@@ -136,15 +211,15 @@
         obterdados(3);
         obterdados(4);
 
-        function sendData() {
-			var http = new XMLHttpRequest();
-			http.open('POST', 'http://localhost:3000/api/sendData', false);
-			http.send(null);
-		}
+        // function sendData() {
+        //     var http = new XMLHttpRequest();
+        //     http.open('POST', 'http://localhost:3000/api/sendData', false);
+        //     http.send(null);
+        // }
 
         setInterval(() => {
             sendData()
-		}, 10000);
+        }, 10000);
         setTimeout(atualizacaoPeriodica, 5000);
     }
 
@@ -164,7 +239,7 @@
 
                         }
 
-                        alertar(resposta[0].temperatura,resposta[0].umidade,resposta[0].luminosidade, idEstufa);
+                        alertar(resposta[0].temperatura, resposta[0].umidade, resposta[0].luminosidade, idEstufa);
                     });
                 } else {
 
@@ -222,9 +297,8 @@
             classe_temperatura = 'cor-alerta alerta-frio';
             console.log("caiu no 4")
             alert("Atenção está esfriando")
-
         }
-        else if (temperatura < limitesTemp.min_temperatura) {
+        else if (temperatura < limitesTemp.muito_frio) {
             classe_temperatura = 'cor-alerta perigo-frio';
             console.log("caiu no 5")
             alert("Perigo está muito frio")
@@ -251,73 +325,97 @@
             classe_umidade = 'cor-alerta alerta-seco';
             console.log("caiu no 4")
             alert("Alerta está seco")
-
         }
-        else if (umidade < limitesUmid.min_luminosidade) {
+
+        else if (umidade < limitesUmid.muito_seco) {
             classe_umidade = 'cor-alerta perigo-seco';
             console.log("caiu no 5")
             alert("Pergio está muito umido")
-
         }
-
 
         if (luminosidade >= limitesLumin.muito_claro) {
             classe_luminosidade = 'cor-alerta perigo-claro';
             console.log("caiu no 1")
             alert("Perigo está muito luminoso")
-
         }
-        
+
         else if (luminosidade < limitesLumin.muito_claro && luminosidade >= limitesLumin.claro) {
             classe_luminosidade = 'cor-alerta alerta-claro';
             console.log("caiu no 2")
             alert("Alerta está luminoso")
         }
 
-        else if (luminosidade < limitesLumin.claro && luminosidade > limitesLumin.seco) {
+        else if (uminosidade < limitesLumin.muito_claro && luminosidade >= limitesLumin.claro) {
             classe_luminosidade = 'cor-alerta ideal_lumin';
             console.log("caiu no 3")
         }
 
-        else if (luminosidade <= limitesLumin.seco && luminosidade > limitesLumin.muito_seco) {
+        else if (luminosidade <= limitesLumin.escuro && luminosidade > limitesLumin.muito_escuro) {
             classe_luminosidade = 'cor-alerta alerta-escuro';
             console.log("caiu no 4")
             alert("Alerta está escuro")
         }
 
-        else if (luminosidade < limitesLumin.min_luminosidade) {
+        else if (luminosidade < limitesLumin.muito_escuro) {
             classe_luminosidade = 'cor-alerta perigo-escuro';
             console.log("caiu no 5")
             alert("Perigo está muito escuro")
         }
 
-        var card;
+        var tempcard;
+        var umidcard;
+        var lumicard;
 
         if (idEstufa == 1) {
-            estufa1.innerHTML = temperatura + "°C";
-            estufa2.innerHTML = umidade + "%";
-            estufa3.innerHTML = luminosidade;
+            tempEstu1.innerHTML = temperatura + "°C";
+            umidEstu1.innerHTML = umidade + "%";
+            lumiEstu1.innerHTML = luminosidade;
 
-            card1 = card_1
-            card2 = card_2
-            card3 = card_3
+            tempcard1 = tempcard_1;
+            umidcard1 = umidcard_1;
+            lumicard1 = lumicard_1;
         }
-         else if (idEstufa == 2) {
-            temp_aquario_2.innerHTML = temperatura + "°C";
-            card = card_2
+        else if (idEstufa == 2) {
+            tempEstu2.innerHTML = temperatura + "°C";
+            umidEstu2.innerHTML = umidade + "%";
+            lumiEstu2.innerHTML = luminosidade;
+            tempcard2 = tempcard_2;
+            umidcard2 = umidcard_2;
+            lumicard2 = lumicard_2;
+
         } else if (idEstufa == 3) {
-            temp_aquario_3.innerHTML = temperatura + "°C";
-            card = card_3
+            tempEstu3.innerHTML = temperatura + "°C";
+            umidEstu3.innerHTML = umidade + "%";
+            lumiEstu3.innerHTML = luminosidade;
+            tempcard3 = tempcard_3;
+            umidcard3 = umidcard_3;
+            lumicard3 = lumicard_3;
+
         } else if (idEstufa == 4) {
-            temp_aquario_4.innerHTML = temperatura + "°C";
-            card = card_4
+            tempEstu4.innerHTML = temperatura + "°C";
+            umidEstu4.innerHTML = umidade + "%";
+            lumiEstu4.innerHTML = luminosidade;
+            tempcard4 = tempcard_4;
+            umidcard4 = umidcard_4;
+            lumicard4 = lumicard_4;
+
         }
 
         // alterando
-        card1.className = classe_temperatura;
-        card2.className = classe_umidade;
-        card3.className = classe_luminosidade;
+        tempcard1 = classe_temperatura;
+        umidcard1 = classe_umidade;
+        lumicard1 = classe_luminosidade;
 
+        tempcard2 = classe_temperatura;
+        umidcard2 = classe_umidade;
+        lumicard2 = classe_luminosidade;
+
+        tempcard3 = classe_temperatura;
+        umidcard3 = classe_umidade;
+        lumicard3 = classe_luminosidade;
+
+        tempcard4 = classe_temperatura;
+        umidcard4 = classe_umidade;
+        lumicard4 = classe_luminosidade;
     }
 </script>
-   

@@ -10,9 +10,9 @@ function buscarUltimasMedidas(idEstufa) {
 }
 
 function medidaskpi(idEstufa) {
-    instrucaoSql = `SELECT max(dht11Umidade) AS umidade, max(lm35Temperatura) AS temperatura, max(luminosidade) AS luminosidade FROM dado
-    JOIN estufa ON fkEstufa = idEstufa 
-    where idEstufa = ${idEstufa};`;
+    instrucaoSql = `SELECT MAX(dht11Umidade) AS umidade, MAX(lm35Temperatura) AS temperatura, MAX(luminosidade+108) AS luminosidade FROM dado
+    JOIN estufa ON fkEstufa = ${idEstufa} 
+    where idEstufa = 1;`;
 
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
