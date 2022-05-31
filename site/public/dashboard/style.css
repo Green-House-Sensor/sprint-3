@@ -129,7 +129,7 @@ main span {
     font-weight: 600;
 }
 
-.estufa1 {
+.estufa {
     background-color: rgb(255, 255, 255);
     height: 260px;
     width: 250px;
@@ -140,27 +140,8 @@ main span {
     padding-top: 0.5rem;
 }
 
-.estufa2 {
-    background-color: #ffffff;
-    height: 260px;
-    width: 250px;
-    border-radius: 10%;
-    box-shadow: 20px 20px 60px #bebebe,
-        -20px -20px 60px #ffffff;
-        padding-top: 0.5rem;
-}
 
-.estufa3 {
-    background-color: rgb(255, 255, 255);
-    height: 260px;
-    width: 250px;
-    border-radius: 10%;
-    box-shadow: 20px 20px 60px #bebebe,
-        -20px -20px 60px #ffffff;
-        padding-top: 0.5rem;
-}
-
-.problema1 {
+/*.problema1 {
     display: none;
     display: flex;
     text-align: center;
@@ -188,16 +169,7 @@ main span {
     font-weight: 600;
 }
 
-.estufa4 {
-    background-color: rgb(255, 255, 255);
-    height: 260px;
-    width: 250px;
-    padding: 0;
-    border-radius: 10%;
-    box-shadow: 20px 20px 60px #bebebe,
-        -20px -20px 60px #ffffff;
-        padding-top: 0.5rem;
-}
+
 
 .estufa5 {
     background-color: #ffffff;
@@ -255,7 +227,7 @@ main span {
 .estadoa {
     border-radius: 4px;
     background-color: rgb(255, 245, 109);
-}
+} */
 
 main a {
     text-decoration: none;

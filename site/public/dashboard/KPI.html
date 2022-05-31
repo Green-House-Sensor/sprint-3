@@ -144,7 +144,7 @@
 
         setInterval(() => {
             sendData()
-		}, 2000);
+		}, 10000);
         setTimeout(atualizacaoPeriodica, 5000);
     }
 
@@ -207,12 +207,12 @@
         if (temperatura >= limitesTemp.muito_quente) {
             classe_temperatura = 'cor-alerta perigo-quente';
             console.log("caiu no 1")
-            alert("Perigo!!! esta muito quente")
+            alert("Perigo está muito quente")
         }
         else if (temperatura < limitesTemp.muito_quente && temperatura >= limitesTemp.quente) {
             classe_temperatura = 'cor-alerta alerta-quente';
             console.log("caiu no 2")
-            alert("Atenção esta esquentando")
+            alert("Atenção está esquentando")
         }
         else if (temperatura < limitesTemp.quente && temperatura > limitesTemp.frio) {
             classe_temperatura = 'cor-alerta ideal_temp';
@@ -221,21 +221,27 @@
         else if (temperatura <= limitesTemp.frio && temperatura > limitesTemp.muito_frio) {
             classe_temperatura = 'cor-alerta alerta-frio';
             console.log("caiu no 4")
+            alert("Atenção está esfriando")
+
         }
         else if (temperatura < limitesTemp.min_temperatura) {
             classe_temperatura = 'cor-alerta perigo-frio';
             console.log("caiu no 5")
+            alert("Perigo está muito frio")
+
         }
 
 
         if (umidade >= limitesUmid.muito_umido) {
             classe_umidade = 'cor-alerta perigo-umido';
             console.log("caiu no 1")
-            alert("Perigo!!! esta muito umido")
+            alert("Perigo está muito umido")
         }
         else if (umidade < limitesUmid.muito_umido && umidade >= limitesUmid.umido) {
             classe_umidade = 'cor-alerta alerta-umido';
             console.log("caiu no 2")
+            alert("Alerta está umido")
+
         }
         else if (umidade < limitesUmid.umido && umidade > limitesUmid.seco) {
             classe_umidade = 'cor-alerta ideal_umid';
@@ -244,34 +250,45 @@
         else if (umidade <= limitesUmid.seco && umidade > limitesUmid.muito_seco) {
             classe_umidade = 'cor-alerta alerta-seco';
             console.log("caiu no 4")
+            alert("Alerta está seco")
+
         }
         else if (umidade < limitesUmid.min_luminosidade) {
             classe_umidade = 'cor-alerta perigo-seco';
             console.log("caiu no 5")
+            alert("Pergio está muito umido")
+
         }
 
 
         if (luminosidade >= limitesLumin.muito_claro) {
             classe_luminosidade = 'cor-alerta perigo-claro';
             console.log("caiu no 1")
-            alert("Perigo!!! esta muito luminoso")
+            alert("Perigo está muito luminoso")
 
         }
+        
         else if (luminosidade < limitesLumin.muito_claro && luminosidade >= limitesLumin.claro) {
             classe_luminosidade = 'cor-alerta alerta-claro';
             console.log("caiu no 2")
+            alert("Alerta está luminoso")
         }
+
         else if (luminosidade < limitesLumin.claro && luminosidade > limitesLumin.seco) {
             classe_luminosidade = 'cor-alerta ideal_lumin';
             console.log("caiu no 3")
         }
+
         else if (luminosidade <= limitesLumin.seco && luminosidade > limitesLumin.muito_seco) {
             classe_luminosidade = 'cor-alerta alerta-escuro';
             console.log("caiu no 4")
+            alert("Alerta está escuro")
         }
+
         else if (luminosidade < limitesLumin.min_luminosidade) {
             classe_luminosidade = 'cor-alerta perigo-escuro';
             console.log("caiu no 5")
+            alert("Perigo está muito escuro")
         }
 
         var card;
