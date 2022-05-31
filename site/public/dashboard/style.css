@@ -76,7 +76,13 @@ main span {
     box-shadow: 20px 20px 60px #bebebe,
         -20px -20px 60px #ffffff;
     padding-top: 0.5rem;
+<<<<<<< HEAD
     margin-top: 5rem;
+=======
+    margin-top: 25rem;
+    margin-left: -54rem;
+    position: absolute;
+>>>>>>> 30567651c04b0144d42b205637116a79e815777d
 }
 
 .estufa4 {
@@ -88,7 +94,13 @@ main span {
     box-shadow: 20px 20px 60px #bebebe,
         -20px -20px 60px #ffffff;
     padding-top: 0.5rem;
+<<<<<<< HEAD
     margin-top: 5rem;
+=======
+    margin-top: -1rem;
+    margin-right: 10rem;
+    position: absolute;
+>>>>>>> 30567651c04b0144d42b205637116a79e815777d
 }
 
 .estufa:hover {
